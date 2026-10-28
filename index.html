@@ -9,15 +9,11 @@
 @media(max-width:980px){.layout{grid-template-columns:200px 1fr}.content{padding:25px 22px}.topbar{padding:0 22px}.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.grid2{grid-template-columns:1fr}.profile{grid-template-columns:1fr 1.6fr}}
 @media(max-width:680px){.layout{display:block}.sidebar{min-height:0;padding:13px;position:sticky;top:0;z-index:5}.brand{padding:0 5px 12px}.workspace,.sidebottom{display:none}.nav{display:flex;overflow:auto;gap:4px}.nav button{padding:8px 10px;white-space:nowrap;font-size:12px}.nav .ico{display:none}.topbar{height:52px;padding:0 15px}.status{display:none}.content{padding:22px 14px}.heading{display:block}.heading>.btn{margin-top:15px}.cards{gap:9px}.metric{padding:14px}.metric-value{font-size:24px}.panel{padding:15px}.formgrid{grid-template-columns:1fr}.results-summary{grid-template-columns:repeat(2,1fr)}.profile{grid-template-columns:1fr}.detailrow{grid-template-columns:110px 1fr}.topright{gap:6px}}
 @media print{.sidebar,.topbar,.noprint,.heading .btn{display:none!important}.layout{display:block}.content{padding:0;max-width:none}.page{display:none!important}#page-scan{display:block!important}.panel,.finding{box-shadow:none;break-inside:avoid}.report-toolbar{display:none}body{background:#fff}}
-</style>
-<style>
-.brandmark{width:42px;height:42px;background:#2864dc;color:#fff;border-radius:12px;display:grid;place-items:center;flex:none}
-.brandmark svg{width:25px;height:25px;display:block}
 </style></head>
 <body>
 <div class="layout">
 <aside class="sidebar">
-  <div class="brand"><span class="brandmark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.2 3.5 5.6v5.3c0 5.1 3.5 9.5 8.5 10.9 5-1.4 8.5-5.8 8.5-10.9V5.6L12 2.2Z" fill="white"/><path d="M12 5.5v13c3.4-1.3 5.7-4.3 5.7-7.7V7.8L12 5.5Z" fill="#2864dc"/></svg></span> DepSentry</div>
+  <div class="brand"><span class="brandmark">⌁</span> DepSentry</div>
   <div class="workspace">WORKSPACE</div>
   <nav class="nav" aria-label="Main navigation">
     <button class="active" data-page="dashboard"><span class="ico">▦</span> Overview</button>
@@ -28,14 +24,14 @@
   <div class="sidebottom">
     <div class="plan">CURRENT PLAN<br><b>Starter · Free</b><br>Basic dependency checks</div>
     <button class="upgrade" id="upgradeBtn">☆ &nbsp; Explore Pro</button>
-    <div class="user-mini"><div class="avatar">MK</div><div><b>Melissa King</b><small>Workspace owner</small></div></div>
+    <div class="user-mini"><div class="avatar">MI</div><div><b>Madina Isak</b><small>Workspace owner</small></div></div>
   </div>
 </aside>
 <div class="main">
 <header class="topbar"><div class="crumb">Workspace / <b id="crumb">Overview</b></div><div class="topright"><span class="status"><span class="dot"></span> Demo workspace</span><button class="iconbtn" id="topNew">＋ New scan</button></div></header>
 <main class="content">
 <section class="page active" id="page-dashboard">
-  <div class="heading"><div><div class="eyebrow">Workspace overview</div><h1>Good evening, Melissa</h1><p class="sub">Keep track of vulnerable dependencies and decide what needs attention first.</p></div><button class="btn primary" data-goto="scan">＋ Start a new scan</button></div>
+  <div class="heading"><div><div class="eyebrow">Workspace overview</div><h1>Good evening, Madina</h1><p class="sub">Keep track of vulnerable dependencies and decide what needs attention first.</p></div><button class="btn primary" data-goto="scan">＋ Start a new scan</button></div>
   <div class="cards">
     <div class="card metric"><div class="metric-top">Total scans <span class="metric-icon">⌕</span></div><div class="metric-value" id="mScans">3</div><div class="metric-note">Scans saved in this browser</div></div>
     <div class="card metric"><div class="metric-top">Vulnerabilities found <span class="metric-icon red">!</span></div><div class="metric-value" id="mVulns">8</div><div class="metric-note">Across your saved scan reports</div></div>
@@ -99,9 +95,9 @@ For pom.xml, upload the Maven file.'></textarea><div class="helper">Supported in
 <section class="page" id="page-account">
   <div class="heading"><div><div class="eyebrow">Personal settings</div><h1>My account</h1><p class="sub">Manage your demo profile and workspace preferences.</p></div></div>
   <div class="profile">
-    <div class="panel profile-card"><div class="avatar big">MK</div><h2>Melissa King</h2><p>Workspace owner · Demo account</p><div class="planbox"><b>Starter plan <span class="badge clean" style="float:right">ACTIVE</span></b><span>Basic dependency checks and local reports</span></div></div>
+    <div class="panel profile-card"><div class="avatar big">MI</div><h2>Madina Isak</h2><p>Workspace owner · Demo account</p><div class="planbox"><b>Starter plan <span class="badge clean" style="float:right">ACTIVE</span></b><span>Basic dependency checks and local reports</span></div></div>
     <div class="panel profile-details"><h2>Profile details</h2><p class="muted" style="font-size:12px;margin:3px 0 15px">Sample profile for demonstrating the user journey.</p>
-      <div class="detailrow"><span>Full name</span><b>Melissa King</b></div><div class="detailrow"><span>Email</span><b>melissa@example.com <span class="muted">(demo)</span></b></div><div class="detailrow"><span>Workspace</span><b>DepSentry Starter</b></div><div class="detailrow"><span>Plan</span><b>Free · MVP prototype</b></div><div class="detailrow"><span>Data storage</span><b>Local browser storage</b></div>
+      <div class="detailrow"><span>Full name</span><b>Madina Isak</b></div><div class="detailrow"><span>Email</span><b>madina@example.com <span class="muted">(demo)</span></b></div><div class="detailrow"><span>Workspace</span><b>DepSentry Starter</b></div><div class="detailrow"><span>Plan</span><b>Free · MVP prototype</b></div><div class="detailrow"><span>Data storage</span><b>Local browser storage</b></div>
       <div class="notice" style="margin-top:18px;margin-bottom:0"><strong>Prototype note:</strong> this is a simulated account view, not real authentication. A production version would need a backend, secure sign-in and server-side storage.</div>
     </div>
   </div>
@@ -216,18 +212,62 @@ function cvss3Base(vector){
  }catch(e){return null}
 }
 function mapSeverity(v){let scores=(v.severity||[]).map(s=>{let n=parseFloat(s.score);if(!Number.isFinite(n))n=cvss3Base(s.score);return n}).filter(n=>n!==null&&!Number.isNaN(n));let score=scores.length?Math.max(...scores):0;if(score>=9)return'critical';if(score>=7)return'high';if(score>=4)return'medium';let db=String(v.database_specific?.severity||v.ecosystem_specific?.severity||'').toLowerCase();if(db)return severity(db);return score>0?'low':'unknown'}
-function fixVersion(v,d){
- let affected=(v.affected||[]).find(a=>(a.package?.name||'').toLowerCase()===d.name.toLowerCase());
- if(!affected)return'Check advisory';
- let fixes=[];(affected.ranges||[]).forEach(r=>(r.events||[]).forEach(e=>{if(e.fixed)fixes.push(e.fixed)}));
- return fixes[0]||'No fixed version listed';
+// Merge advisory IDs linked through OSV aliases; never merge by title alone.
+const RISK_ORDER={critical:0,high:1,medium:2,low:3,unknown:4};
+function safeFix(v,d){
+ const affected=(v.affected||[]).filter(a=>String(a.package?.name||'').toLowerCase()===d.name.toLowerCase() && (!a.package?.ecosystem || a.package.ecosystem===d.ecosystem));
+ const fixes=affected.flatMap(a=>(a.ranges||[]).flatMap(r=>(r.events||[]).map(e=>e.fixed).filter(Boolean)).concat(a.versions?.length?[]:[]));
+ // Only show a version if it is a numeric release newer than the scanned version.
+ const numeric=s=>/^\d+(?:\.\d+){1,3}(?:[-+][\w.-]+)?$/.test(String(s));
+ const cmp=(a,b)=>{const x=a.split(/[.+-]/).slice(0,4).map(Number),y=b.split(/[.+-]/).slice(0,4).map(Number);for(let i=0;i<4;i++){let q=(x[i]||0)-(y[i]||0);if(q)return q}return 0};
+ const candidates=[...new Set(fixes)].filter(x=>numeric(x)&&numeric(d.version)&&cmp(x,d.version)>0).sort(cmp);
+ // An advisory's patch is not necessarily sufficient for every other advisory.
+ return candidates[0]||'';
 }
-function transform(data){let out=[];data.forEach(row=>row.vulns.forEach(v=>out.push({name:row.dependency.name,version:row.dependency.version,ecosystem:row.dependency.ecosystem,id:v.id||'OSV advisory',summary:v.summary||v.details||'A published vulnerability record matches this package version.',severity:mapSeverity(v),fix:fixVersion(v,row.dependency),url:v.references?.find(r=>r.type==='ADVISORY')?.url||v.references?.[0]?.url||'https://osv.dev/',modified:v.modified||v.published||'',source:'OSV.dev'})));let order={critical:0,high:1,medium:2,low:3};return out.sort((a,b)=>order[a.severity]-order[b.severity]||a.name.localeCompare(b.name))}
+function transform(data){
+ const out=[];
+ data.forEach(row=>{
+  const raw=row.vulns||[];
+  const parent=raw.map((_,i)=>i);
+  const find=i=>parent[i]===i?i:(parent[i]=find(parent[i]));
+  const seen=new Map();
+  raw.forEach((v,i)=>[v.id,...(v.aliases||[])].filter(Boolean).forEach(id=>{if(seen.has(id))parent[find(i)]=find(seen.get(id));else seen.set(id,i)}));
+  const groups=new Map();
+  raw.forEach((v,i)=>{const k=find(i);if(!groups.has(k))groups.set(k,[]);groups.get(k).push(v)});
+  groups.forEach(group=>{
+   const best=[...group].sort((a,b)=>(RISK_ORDER[mapSeverity(a)]??4)-(RISK_ORDER[mapSeverity(b)]??4))[0];
+   const ids=[...new Set(group.flatMap(v=>[v.id,...(v.aliases||[])]).filter(Boolean))];
+   const fixes=[...new Set(group.map(v=>safeFix(v,row.dependency)).filter(Boolean))];
+   // Do not claim one patch resolves every advisory.
+   out.push({name:row.dependency.name,version:row.dependency.version,ecosystem:row.dependency.ecosystem,
+    id:best.id||ids[0]||'OSV advisory',aliases:ids,summary:best.summary||best.details||'Published advisory matches this package.',
+    severity:best?group.map(mapSeverity).sort((a,b)=>(RISK_ORDER[a]??4)-(RISK_ORDER[b]??4))[0]:'unknown',
+    fix:fixes.length===1?fixes[0]:'',url:best.references?.find(r=>r.type==='ADVISORY')?.url||best.references?.[0]?.url||'https://osv.dev/',
+    source:'OSV.dev',merged:group.length});
+  });
+ });
+ return out.sort((a,b)=>(RISK_ORDER[a.severity]??4)-(RISK_ORDER[b.severity]??4)||a.name.localeCompare(b.name));
+}
+let findingFilter='all',findingPackage='all',showAllFindings=false;
 function renderFindings(items){
- let counts={critical:0,high:0,medium:0,low:0};items.forEach(x=>counts[x.severity]=(counts[x.severity]||0)+1);
- $('resultStats').innerHTML=`<div class="mini-stat"><span>Packages checked</span><b>${currentReport.packages}</b></div><div class="mini-stat"><span>Findings</span><b>${items.length}</b></div><div class="mini-stat"><span>Critical / High</span><b>${counts.critical+counts.high}</b></div><div class="mini-stat"><span>Clean in this check</span><b>${Math.max(0,currentReport.packages-new Set(items.map(x=>x.name)).size)}</b></div>`;
- if(!items.length){$('findingsList').innerHTML='<div class="empty"><b>No matching vulnerability records returned</b>This does not prove the packages are secure. Confirm that the package versions are exact and review the source database coverage.</div>';return}
- $('findingsList').innerHTML=items.map((x,i)=>`<article class="finding"><div class="finding-head"><div><div class="finding-name">${i===0?'<span style="color:var(--red)">● </span>':''}${esc(x.name)} <span class="version">${esc(x.version)}</span></div><div class="finding-meta">${esc(x.id)} · ${esc(x.source||'OSV.dev')}</div></div><span class="badge ${severity(x.severity)}">${esc(x.severity)}</span></div><div class="finding-body"><p>${esc(x.summary)}</p><div class="fixline"><b>Recommended action:</b> Review the advisory and update to ${esc(x.fix||'a patched version if available')}. Test compatibility before deploying.</div><p style="margin-top:10px"><a class="source-link" href="${esc(x.url||'https://osv.dev/')}" target="_blank" rel="noopener">Open advisory ↗</a></p></div></article>`).join('');
+ const counts={critical:0,high:0,medium:0,low:0,unknown:0};items.forEach(x=>counts[x.severity]=(counts[x.severity]||0)+1);
+ $('resultStats').innerHTML=`<div class="mini-stat"><span>Packages checked</span><b>${currentReport.packages}</b></div><div class="mini-stat"><span>Unique advisories</span><b>${items.length}</b></div><div class="mini-stat"><span>Critical / High</span><b>${counts.critical+counts.high}</b></div><div class="mini-stat"><span>Clean in this check</span><b>${Math.max(0,currentReport.packages-new Set(items.map(x=>x.name)).size)}</b></div>`;
+ const holder=$('findingsList');
+ if(!items.length){holder.innerHTML='<div class="empty"><b>No matching vulnerability records returned</b>This does not prove the packages are secure.</div>';return}
+ const names=[...new Set(items.map(x=>x.name))];
+ const summary=names.map(name=>{const subset=items.filter(x=>x.name===name);const hi=subset.filter(x=>['critical','high'].includes(x.severity)).length;return `<div class="fixline" style="margin-bottom:7px"><b>${esc(name)}</b>: ${subset.length} unique advisories (${hi} critical/high)</div>`}).join('');
+ const filtered=items.filter(x=>(findingFilter==='all'||x.severity===findingFilter)&&(findingPackage==='all'||x.name===findingPackage));
+ const visible=showAllFindings?filtered:filtered.slice(0,8);
+ holder.innerHTML=`<div class="panel" style="padding:15px;margin-top:12px"><h3>Package overview</h3>${summary}<p class="risk-note">An advisory may have several IDs. Related IDs are merged using OSV aliases; similar titles alone are not merged. A suggested patch for one advisory is not proof all issues are fixed.</p></div>
+ <div class="scan-actions" style="margin:15px 0">
+ <label>Severity <select id="riskFilter" style="padding:8px"><option value="all">All levels</option>${['critical','high','medium','low','unknown'].map(s=>`<option value="${s}" ${findingFilter===s?'selected':''}>${s}</option>`).join('')}</select></label>
+ <label>Package <select id="packageFilter" style="padding:8px"><option value="all">All packages</option>${names.map(s=>`<option value="${esc(s)}" ${findingPackage===s?'selected':''}>${esc(s)}</option>`).join('')}</select></label>
+ </div><p class="risk-note">Showing ${visible.length} of ${filtered.length} matching advisories</p>`+
+ visible.map(x=>`<article class="finding"><div class="finding-head"><div><div class="finding-name">${esc(x.name)} <span class="version">${esc(x.version)}</span></div><div class="finding-meta">${esc(x.id)} · ${esc(x.source||'OSV.dev')}${x.merged>1?' · '+x.merged+' linked records merged':''}</div></div><span class="badge ${severity(x.severity)}">${esc(x.severity)}</span></div><div class="finding-body"><p>${esc(x.summary)}</p><div class="fixline"><b>Next step:</b> ${x.fix?'A patch for this advisory is listed at '+esc(x.fix)+'. ':'Review the advisory for a supported patched release. '}Check all other findings for this package and test compatibility before upgrading.</div><p style="margin-top:10px"><a class="source-link" href="${esc(x.url||'https://osv.dev/')}" target="_blank" rel="noopener">Open advisory ↗</a></p></div></article>`).join('')+
+ (!showAllFindings&&filtered.length>8?'<button class="btn" id="showAllFindings" style="margin-top:14px">Show all '+filtered.length+' findings</button>':'');
+ $('riskFilter').onchange=e=>{findingFilter=e.target.value;showAllFindings=false;renderFindings(items)};
+ $('packageFilter').onchange=e=>{findingPackage=e.target.value;showAllFindings=false;renderFindings(items)};
+ if($('showAllFindings'))$('showAllFindings').onclick=()=>{showAllFindings=true;renderFindings(items)};
 }
 async function runScan(){
  let err=$('scanError');err.hidden=true;let raw=$('depsInput').value;if(!raw.trim()){err.textContent='Paste a dependency list or load the example first.';err.hidden=false;return}
@@ -244,14 +284,14 @@ async function runScan(){
  let now=new Date(),report={id:'scan-'+Date.now(),project:$('projectName').value.trim()||'Untitled project',ecosystem:parsed.ecosystem,packages:deps.length,findings:findings.length,critical:findings.filter(x=>x.severity==='critical').length,created:now.toISOString(),date:dateShort(now),items:findings,source,dependencies:deps};
  currentReport=report;let saved=getReports();saved.unshift(report);setReports(saved);
  $('resultsTitle').textContent=report.project+' · scan report';$('resultsDesc').textContent=`${report.packages} packages checked · ${dateShort(now)} · Source: ${source}`;
- renderFindings(findings);$('scanResults').hidden=false;$('scanResults').scrollIntoView({behavior:'smooth',block:'start'});renderDashboard();toast('Scan report created');
+ findingFilter='all';findingPackage='all';showAllFindings=false;renderFindings(findings);$('scanResults').hidden=false;$('scanResults').scrollIntoView({behavior:'smooth',block:'start'});renderDashboard();toast('Scan report created');
 }
 $('runScan').onclick=runScan;
 $('printReport').onclick=()=>{if(!currentReport)return;page('scan');window.print()};
 $('downloadJson').onclick=()=>{if(!currentReport)return;downloadFile(JSON.stringify(currentReport,null,2),`${slug(currentReport.project)}-report.json`,'application/json')};
 function slug(s){return String(s||'report').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'report'}
 function downloadFile(content,name,type){let a=document.createElement('a'),url=URL.createObjectURL(new Blob([content],{type}));a.href=url;a.download=name;a.click();URL.revokeObjectURL(url)}
-function openReport(id){let r=allReports().find(x=>x.id===id);if(!r){toast('Report not found');return}currentReport=r;page('scan');$('projectName').value=r.project;$('resultsTitle').textContent=r.project+' · scan report';$('resultsDesc').textContent=`${r.packages} packages checked · ${r.date} · Source: ${r.source}`;renderFindings(r.items||[]);$('scanResults').hidden=false;setTimeout(()=>$('scanResults').scrollIntoView({behavior:'smooth'}),100)}
+function openReport(id){let r=allReports().find(x=>x.id===id);if(!r){toast('Report not found');return}currentReport=r;page('scan');$('projectName').value=r.project;$('resultsTitle').textContent=r.project+' · scan report';$('resultsDesc').textContent=`${r.packages} packages checked · ${r.date} · Source: ${r.source}`;findingFilter='all';findingPackage='all';showAllFindings=false;renderFindings(r.items||[]);$('scanResults').hidden=false;setTimeout(()=>$('scanResults').scrollIntoView({behavior:'smooth'}),100)}
 window.openReport=openReport;
 $('clearHistory').onclick=()=>{if(confirm('Clear all scan reports saved in this browser?')){setReports([]);renderReports();renderDashboard();toast('Local report history cleared')}};
 renderDashboard();renderReports();
