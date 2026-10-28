@@ -239,31 +239,54 @@ function transform(data){
    const ids=[...new Set(group.flatMap(v=>[v.id,...(v.aliases||[])]).filter(Boolean))];
    const fixes=[...new Set(group.map(v=>safeFix(v,row.dependency)).filter(Boolean))];
    // Do not claim one patch resolves every advisory.
-   out.push({name:row.dependency.name,version:row.dependency.version,ecosystem:row.dependency.ecosystem,
+   const affected={name:row.dependency.name,version:row.dependency.version,ecosystem:row.dependency.ecosystem,fix:fixes.length===1?fixes[0]:'',url:best.references?.find(r=>r.type==='ADVISORY')?.url||best.references?.[0]?.url||'https://osv.dev/'};
+   out.push({name:row.dependency.name,version:row.dependency.version,ecosystem:row.dependency.ecosystem,affected:[affected],
     id:best.id||ids[0]||'OSV advisory',aliases:ids,summary:best.summary||best.details||'Published advisory matches this package.',
     severity:best?group.map(mapSeverity).sort((a,b)=>(RISK_ORDER[a]??4)-(RISK_ORDER[b]??4))[0]:'unknown',
-    fix:fixes.length===1?fixes[0]:'',url:best.references?.find(r=>r.type==='ADVISORY')?.url||best.references?.[0]?.url||'https://osv.dev/',
+    fix:affected.fix,url:affected.url,links:[...new Map(group.flatMap(v=>(v.references||[]).filter(r=>r.url).map(r=>[r.url,{id:v.id||'OSV advisory',url:r.url}]))).values()],
     source:'OSV.dev',merged:group.length});
   });
  });
- return out.sort((a,b)=>(RISK_ORDER[a.severity]??4)-(RISK_ORDER[b.severity]??4)||a.name.localeCompare(b.name));
+ const parent=out.map((_,i)=>i);
+ const find=i=>parent[i]===i?i:(parent[i]=find(parent[i]));
+ const seen=new Map();
+ out.forEach((item,i)=>item.aliases.forEach(id=>{if(seen.has(id))parent[find(i)]=find(seen.get(id));else seen.set(id,i)}));
+ const groups=new Map();
+ out.forEach((item,i)=>{const root=find(i);if(!groups.has(root))groups.set(root,[]);groups.get(root).push(item)});
+ return [...groups.values()].map(group=>{
+  const best=[...group].sort((a,b)=>(RISK_ORDER[a.severity]??4)-(RISK_ORDER[b.severity]??4))[0];
+  const affected=[...new Map(group.flatMap(item=>item.affected).map(d=>[`${d.ecosystem}:${d.name.toLowerCase()}@${d.version}`,d])).values()];
+  const links=[...new Map(group.flatMap(item=>item.links).map(link=>[link.url,link])).values()];
+  return {...best,aliases:[...new Set(group.flatMap(item=>item.aliases))],affected,links,merged:group.reduce((n,item)=>n+item.merged,0)};
+ }).sort((a,b)=>(RISK_ORDER[a.severity]??4)-(RISK_ORDER[b.severity]??4)||a.name.localeCompare(b.name));
 }
 let findingFilter='all',findingPackage='all',showAllFindings=false;
+function affectedDependencies(item){return item.affected||[{name:item.name,version:item.version,ecosystem:item.ecosystem,fix:item.fix,url:item.url}]}
+function renderFinding(item){
+ const affected=affectedDependencies(item);
+ const packages=affected.map(d=>`${esc(d.name)} <span class="version">${esc(d.version)}</span>`).join(', ');
+ const fixes=affected.map(d=>`<div class="fixline" style="margin-top:7px"><b>${esc(d.name)} ${esc(d.version)}:</b> ${d.fix?'update to '+esc(d.fix)+'; test compatibility before release.':'review the advisory for a supported patched release, then test compatibility.'}</div>`).join('');
+ const links=item.links?.length?item.links:[{id:item.id,url:item.url}];
+ const advisoryLinks=[...new Map(links.filter(link=>/^https?:\/\//i.test(link.url||'')).map(link=>[link.url,link])).values()].map(link=>`<a class="source-link" href="${esc(link.url)}" target="_blank" rel="noopener">${esc(link.id||'Open advisory')} ↗</a>`).join(' · ');
+ return `<article class="finding"><div class="finding-head"><div><div class="finding-name">${affected.length===1?packages:affected.length+' affected dependencies'}</div><div class="finding-meta">${esc(item.id)} · ${esc(item.source||'OSV.dev')}${affected.length>1?' · '+packages:''}</div></div><span class="badge ${severity(item.severity)}">${esc(item.severity)}</span></div><div class="finding-body"><p>${esc(item.summary)}</p><b>Recommended solution</b>${fixes}<p style="margin-top:10px"><b>Advisory links:</b> ${advisoryLinks||'No advisory link was provided.'}</p></div></article>`;
+}
 function renderFindings(items){
  const counts={critical:0,high:0,medium:0,low:0,unknown:0};items.forEach(x=>counts[x.severity]=(counts[x.severity]||0)+1);
- $('resultStats').innerHTML=`<div class="mini-stat"><span>Packages checked</span><b>${currentReport.packages}</b></div><div class="mini-stat"><span>Unique advisories</span><b>${items.length}</b></div><div class="mini-stat"><span>Critical / High</span><b>${counts.critical+counts.high}</b></div><div class="mini-stat"><span>Clean in this check</span><b>${Math.max(0,currentReport.packages-new Set(items.map(x=>x.name)).size)}</b></div>`;
+ const checked=new Set((currentReport.dependencies||[]).map(d=>`${d.ecosystem}:${d.name.toLowerCase()}@${d.version}`));
+ const vulnerable=new Set(items.flatMap(x=>affectedDependencies(x).map(d=>`${d.ecosystem}:${d.name.toLowerCase()}@${d.version}`)));
+ $('resultStats').innerHTML=`<div class="mini-stat"><span>Packages checked</span><b>${currentReport.packages}</b></div><div class="mini-stat"><span>Unique advisories</span><b>${items.length}</b></div><div class="mini-stat"><span>Critical / High</span><b>${counts.critical+counts.high}</b></div><div class="mini-stat"><span>Clean in this check</span><b>${Math.max(0,checked.size-vulnerable.size)}</b></div>`;
  const holder=$('findingsList');
  if(!items.length){holder.innerHTML='<div class="empty"><b>No matching vulnerability records returned</b>This does not prove the packages are secure.</div>';return}
- const names=[...new Set(items.map(x=>x.name))];
- const summary=names.map(name=>{const subset=items.filter(x=>x.name===name);const hi=subset.filter(x=>['critical','high'].includes(x.severity)).length;return `<div class="fixline" style="margin-bottom:7px"><b>${esc(name)}</b>: ${subset.length} unique advisories (${hi} critical/high)</div>`}).join('');
- const filtered=items.filter(x=>(findingFilter==='all'||x.severity===findingFilter)&&(findingPackage==='all'||x.name===findingPackage));
+ const names=[...new Set(items.flatMap(x=>affectedDependencies(x).map(d=>d.name)))];
+ const summary=names.map(name=>{const subset=items.filter(x=>affectedDependencies(x).some(d=>d.name===name));const hi=subset.filter(x=>['critical','high'].includes(x.severity)).length;return `<div class="fixline" style="margin-bottom:7px"><b>${esc(name)}</b>: ${subset.length} unique advisories (${hi} critical/high)</div>`}).join('');
+ const filtered=items.filter(x=>(findingFilter==='all'||x.severity===findingFilter)&&(findingPackage==='all'||affectedDependencies(x).some(d=>d.name===findingPackage)));
  const visible=showAllFindings?filtered:filtered.slice(0,8);
  holder.innerHTML=`<div class="panel" style="padding:15px;margin-top:12px"><h3>Package overview</h3>${summary}<p class="risk-note">An advisory may have several IDs. Related IDs are merged using OSV aliases; similar titles alone are not merged. A suggested patch for one advisory is not proof all issues are fixed.</p></div>
  <div class="scan-actions" style="margin:15px 0">
  <label>Severity <select id="riskFilter" style="padding:8px"><option value="all">All levels</option>${['critical','high','medium','low','unknown'].map(s=>`<option value="${s}" ${findingFilter===s?'selected':''}>${s}</option>`).join('')}</select></label>
  <label>Package <select id="packageFilter" style="padding:8px"><option value="all">All packages</option>${names.map(s=>`<option value="${esc(s)}" ${findingPackage===s?'selected':''}>${esc(s)}</option>`).join('')}</select></label>
  </div><p class="risk-note">Showing ${visible.length} of ${filtered.length} matching advisories</p>`+
- visible.map(x=>`<article class="finding"><div class="finding-head"><div><div class="finding-name">${esc(x.name)} <span class="version">${esc(x.version)}</span></div><div class="finding-meta">${esc(x.id)} · ${esc(x.source||'OSV.dev')}${x.merged>1?' · '+x.merged+' linked records merged':''}</div></div><span class="badge ${severity(x.severity)}">${esc(x.severity)}</span></div><div class="finding-body"><p>${esc(x.summary)}</p><div class="fixline"><b>Next step:</b> ${x.fix?'A patch for this advisory is listed at '+esc(x.fix)+'. ':'Review the advisory for a supported patched release. '}Check all other findings for this package and test compatibility before upgrading.</div><p style="margin-top:10px"><a class="source-link" href="${esc(x.url||'https://osv.dev/')}" target="_blank" rel="noopener">Open advisory ↗</a></p></div></article>`).join('')+
+ visible.map(renderFinding).join('')+
  (!showAllFindings&&filtered.length>8?'<button class="btn" id="showAllFindings" style="margin-top:14px">Show all '+filtered.length+' findings</button>':'');
  $('riskFilter').onchange=e=>{findingFilter=e.target.value;showAllFindings=false;renderFindings(items)};
  $('packageFilter').onchange=e=>{findingPackage=e.target.value;showAllFindings=false;renderFindings(items)};
