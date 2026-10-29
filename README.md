@@ -22,7 +22,7 @@ The MVP supports up to 150 dependencies per scan. It intentionally rejects missi
 1. Open **New scan** from the sidebar or dashboard.
 2. Enter a project name and upload a supported manifest, or paste dependency data.
 3. Press **Check dependencies**. DepSentry parses the file in the browser and queries OSV.dev for each exact package version.
-4. Review the findings sorted by severity. Each finding includes the package/version, advisory ID, summary, source link, and a fixed version when OSV provides one.
+4. Review the findings sorted by severity and the combined update recommendation for each affected package. DepSentry selects the highest numeric fixed-version threshold reported across that package's advisories, shows a conservative **Low risk** / **May break** estimate based on the version line, and flags advisories without a published numeric fix.
 5. Export a JSON report or use **Save PDF** in the browser print dialog.
 6. Reopen previous reports from **Reports**. History is stored in the current browser only.
 
@@ -30,6 +30,7 @@ The MVP supports up to 150 dependencies per scan. It intentionally rejects missi
 - The manifest is read locally in the browser; the original file and application source code are not uploaded to a DepSentry server.
 - Package names and exact versions are sent to OSV.dev to query public vulnerability records. Do not use confidential package names if that disclosure is not acceptable for your project.
 - Reports are saved in browser local storage. They are not synchronised between devices and can be removed if browser storage is cleared.
+- Optional report feedback is also saved only in browser local storage; it is not transmitted to DepSentry or OSV.dev.
 
 ## Run locally
 1. Extract the ZIP archive.
@@ -51,7 +52,7 @@ GitHub Pages hosts the static interface. The live vulnerability checks are perfo
 - The account/profile screen is a demonstration profile, not real authentication.
 - There is no backend, cloud account, shared/team workspace, billing, or server-side report storage.
 - It checks known advisories returned by OSV.dev; an empty result does not prove a package is secure.
-- Fixed-version guidance is shown only when the advisory includes a fix. Any update must be checked for compatibility and tested before release.
+- Combined update guidance compares same-major updates with broader release-branch upgrades and counts the findings each target is expected to address from OSV.dev data. If a complete target cannot be confirmed, the report says so. The Low risk / May break label is only an estimate based on likely breaking-change boundaries (major version, or minor version before 1.0), not a compatibility guarantee; re-scan and test updates before release.
 - The dashboard and report history show only scans actually completed in this browser; no sample vulnerabilities are mixed into live results.
 
 See `START_HERE_RU.md` for local launch and defense instructions, `docs/DEFENSE_GUIDE_RU.md` for a short oral-defense guide, `docs/PROJECT_STRUCTURE.md` for the code layout, and `MVP_VALIDATION.md` for the assignment-criteria checklist and validation plan.

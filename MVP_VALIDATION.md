@@ -16,8 +16,8 @@
 | Step 2 — identify and narrow the audience | CS/software students, freelancers, and small development teams without dedicated security specialists. | Addressed in README and interface copy. |
 | Step 3 — analyse competitors | Existing alternatives include npm audit, GitHub Dependabot, and OWASP Dependency-Check. DepSentry focuses on a simple browser flow and a clear report. | Based on prior project research; not a claim that competitors lack vulnerability detection. |
 | Step 4 — SWOT | Strength: low setup friction and readable output. Weakness: no backend/auth and OSV coverage limits. Opportunity: student/small-team use and shareable reports. Threat: established free tools and user privacy concerns. | Included here as a concise MVP-level SWOT. |
-| Step 5 — user path map | Open app → upload/paste manifest → parse exact versions → query OSV.dev → review severity/fix/advisory → export report → revisit local history. | Implemented in the interface; see README. |
-| Step 6 — prioritised feature list | P0: upload/paste supported manifests, live vulnerability lookup, results, export. P1: local history and dashboard. P2/future: secure accounts, cloud history, teams, billing, API/CLI, compatibility-risk analysis. | P0/P1 included; P2 clearly outside MVP scope. |
+| Step 5 — user path map | Open app → upload/paste manifest → parse exact versions → query OSV.dev → review severity, one combined package update target, risk estimate, and advisories → export report → revisit local history. | Implemented in the interface; see README. |
+| Step 6 — prioritised feature list | P0: upload/paste supported manifests, live vulnerability lookup, results, combined update targets, heuristic risk labels, export. P1: local history and dashboard. P2/future: secure accounts, cloud history, teams, billing, API/CLI, and actual compatibility analysis. | P0/P1 included; full compatibility analysis remains outside MVP scope. |
 | Step 7 — define MVP scope | Browser-only UI, up to 150 exact-version dependencies, live OSV.dev checks, readable findings, JSON/PDF export, local report history. No source-code upload. | Scope is explicit and bounded. |
 | Step 8 — development/management method | Build–Measure–Learn / iterative prototype development. Validate the riskiest assumptions before adding features. | Appropriate for a student MVP; use the test plan below. |
 | Step 9 — alpha and beta testing | Alpha checklist is provided below. Beta testing requires real participants and recorded observations. | **Pending execution** — do not report test results until tests have actually been run. |
@@ -29,7 +29,7 @@ The CustDev survey included 24 respondents. It reported that 70.8% found reports
 
 ### Before MVP — hypotheses
 - **H1:** A browser workflow without local installation will make dependency checking easier for students and small teams.
-- **H2:** A short, prioritised report with plain-language summaries and fix-version information will be easier to act on than a raw advisory list.
+- **H2:** A short, prioritised report with plain-language summaries, one combined update target per package, and a clearly qualified risk estimate will be easier to act on than a raw advisory list.
 - **H3:** A PDF/JSON report will help users show that a check was performed.
 - **H4:** Users will be more comfortable when the original manifest and source code are not uploaded to a DepSentry server; package names and versions are still sent to OSV.dev for lookup.
 
@@ -50,11 +50,14 @@ Run these checks before showing the MVP to users:
 5. Upload a `package-lock.json`; confirm exact versions are extracted. For ranged `package.json` entries, confirm the app asks for exact versions/lockfile rather than claiming it checked a range as an exact version.
 6. Upload a `pom.xml` with concrete Maven dependency versions; confirm dependencies are parsed and sent with the Maven ecosystem.
 7. Try an unsupported or malformed file; confirm a readable error appears.
-8. Export JSON and check it contains project name, date, dependency list, source, and findings.
-9. Use **Save PDF** and save the report from the browser print dialog.
-10. Open **Reports**, reopen a saved report, refresh the page, and confirm history remains in the same browser.
-11. Clear history and confirm locally saved reports disappear.
-12. Check the privacy notice: it must say that the manifest is read locally but package names and versions are sent to OSV.dev.
+8. For a package with multiple advisories, confirm the report shows one combined target; if any advisory has no numeric fix, confirm the report warns that the target may not clear every finding.
+9. Confirm the same-major recommendation and broader full-fix target (when available) show the expected coverage counts; the Low risk / May break estimate must be described as a heuristic, not a compatibility guarantee.
+10. Export JSON and check it contains project name, date, dependency list, source, and findings.
+11. Use **Save PDF** and save the report from the browser print dialog.
+12. Open **Reports**, reopen a saved report, refresh the page, and confirm history remains in the same browser.
+13. Clear history and confirm locally saved reports disappear.
+14. Check the privacy notice: it must say that the manifest is read locally but package names and versions are sent to OSV.dev.
+15. Submit the three report-feedback answers and confirm they remain in browser storage only and are not sent to a service.
 
 ## 5. Beta test plan
 
