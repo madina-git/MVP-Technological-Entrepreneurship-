@@ -11,12 +11,12 @@
 @media print{.sidebar,.topbar,.noprint,.heading .btn,.feedback-form{display:none!important}.layout{display:block}.content{padding:0;max-width:none}.page{display:none!important}#page-scan{display:block!important}.panel,.finding{box-shadow:none;break-inside:avoid}.report-toolbar{display:none}body{background:#fff}}
 </style>
 <style>
-.brandmark svg{width:25px;height:25px;display:block}.update-plan{padding:16px;margin:12px 0}.update-plan>p{margin:4px 0 12px;color:var(--muted);font-size:12px}.plan-item{padding:12px 0;border-top:1px solid var(--line)}.plan-item:first-of-type{border-top:0}.plan-title{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-weight:750}.risk-tag{display:inline-flex;align-items:center;border-radius:5px;padding:4px 7px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.3px}.risk-tag.low{color:var(--green);background:var(--greenbg)}.risk-tag.breaking{color:var(--orange);background:var(--orangebg)}.plan-detail{margin-top:5px;color:#536174;font-size:12px}.plan-caveat{margin-top:5px;color:var(--muted);font-size:11px}.plan-level{margin-top:7px}.advisory-list{margin-top:14px}.advisory-list>summary{cursor:pointer;font-weight:750;color:#344054;padding:12px;border:1px solid var(--line);border-radius:8px;background:#fff}.feedback-form{padding:16px;margin-top:16px}.feedback-form .field select,.feedback-form .field textarea{font-size:12px}.feedback-form textarea{min-height:75px}
+.update-plan{padding:16px;margin:12px 0}.update-plan>p{margin:4px 0 12px;color:var(--muted);font-size:12px}.plan-item{padding:12px 0;border-top:1px solid var(--line)}.plan-item:first-of-type{border-top:0}.plan-title{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-weight:750}.risk-tag{display:inline-flex;align-items:center;border-radius:5px;padding:4px 7px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.3px}.risk-tag.low{color:var(--green);background:var(--greenbg)}.risk-tag.breaking{color:var(--orange);background:var(--orangebg)}.plan-detail{margin-top:5px;color:#536174;font-size:12px}.plan-caveat{margin-top:5px;color:var(--muted);font-size:11px}.plan-level{margin-top:7px}.advisory-list{margin-top:14px}.advisory-list>summary{cursor:pointer;font-weight:750;color:#344054;padding:12px;border:1px solid var(--line);border-radius:8px;background:#fff}.feedback-form{padding:16px;margin-top:16px}.feedback-form .field select,.feedback-form .field textarea{font-size:12px}.feedback-form textarea{min-height:75px}
 </style></head>
 <body>
 <div class="layout">
 <aside class="sidebar">
-  <div class="brand"><span class="brandmark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.2 3.5 5.6v5.3c0 5.1 3.5 9.5 8.5 10.9 5-1.4 8.5-5.8 8.5-10.9V5.6L12 2.2Z" fill="white"/><path d="M12 5.5v13c3.4-1.3 5.7-4.3 5.7-7.7V7.8L12 5.5Z" fill="#2864dc"/></svg></span> DepSentry</div>
+  <div class="brand"><span class="brandmark">⌁</span> DepSentry</div>
   <div class="workspace">WORKSPACE</div>
   <nav class="nav" aria-label="Main navigation">
     <button class="active" data-page="dashboard"><span class="ico">▦</span> Overview</button>
@@ -27,14 +27,14 @@
   <div class="sidebottom">
     <div class="plan">CURRENT PLAN<br><b>Starter · Free</b><br>Basic dependency checks</div>
     <button class="upgrade" id="upgradeBtn">☆ &nbsp; Explore Pro</button>
-    <div class="user-mini"><div class="avatar">MI</div><div><b>Madina Isak</b><small>Workspace owner</small></div></div>
+    <div class="user-mini"><div class="avatar">MK</div><div><b>Melissa King</b><small>Workspace owner</small></div></div>
   </div>
 </aside>
 <div class="main">
 <header class="topbar"><div class="crumb">Workspace / <b id="crumb">Overview</b></div><div class="topright"><span class="status"><span class="dot"></span> Demo workspace</span><button class="iconbtn" id="topNew">＋ New scan</button></div></header>
 <main class="content">
 <section class="page active" id="page-dashboard">
-  <div class="heading"><div><div class="eyebrow">Workspace overview</div><h1>Good evening, Madina</h1><p class="sub">Keep track of vulnerable dependencies and decide what needs attention first.</p></div><button class="btn primary" data-goto="scan">＋ Start a new scan</button></div>
+  <div class="heading"><div><div class="eyebrow">Workspace overview</div><h1>Good evening, Melissa</h1><p class="sub">Keep track of vulnerable dependencies and decide what needs attention first.</p></div><button class="btn primary" data-goto="scan">＋ Start a new scan</button></div>
   <div class="cards">
     <div class="card metric"><div class="metric-top">Total scans <span class="metric-icon">⌕</span></div><div class="metric-value" id="mScans">3</div><div class="metric-note">Scans saved in this browser</div></div>
     <div class="card metric"><div class="metric-top">Vulnerabilities found <span class="metric-icon red">!</span></div><div class="metric-value" id="mVulns">8</div><div class="metric-note">Across your saved scan reports</div></div>
@@ -107,9 +107,9 @@ For pom.xml, upload the Maven file.'></textarea><div class="helper">Supported in
 <section class="page" id="page-account">
   <div class="heading"><div><div class="eyebrow">Personal settings</div><h1>My account</h1><p class="sub">Manage your demo profile and workspace preferences.</p></div></div>
   <div class="profile">
-    <div class="panel profile-card"><div class="avatar big">MI</div><h2>Madina Isak</h2><p>Workspace owner · Demo account</p><div class="planbox"><b>Starter plan <span class="badge clean" style="float:right">ACTIVE</span></b><span>Basic dependency checks and local reports</span></div></div>
+    <div class="panel profile-card"><div class="avatar big">MK</div><h2>Melissa King</h2><p>Workspace owner · Demo account</p><div class="planbox"><b>Starter plan <span class="badge clean" style="float:right">ACTIVE</span></b><span>Basic dependency checks and local reports</span></div></div>
     <div class="panel profile-details"><h2>Profile details</h2><p class="muted" style="font-size:12px;margin:3px 0 15px">Sample profile for demonstrating the user journey.</p>
-      <div class="detailrow"><span>Full name</span><b>Madina Isak</b></div><div class="detailrow"><span>Email</span><b>madina@example.com <span class="muted">(demo)</span></b></div><div class="detailrow"><span>Workspace</span><b>DepSentry Starter</b></div><div class="detailrow"><span>Plan</span><b>Free · MVP prototype</b></div><div class="detailrow"><span>Data storage</span><b>Local browser storage</b></div>
+      <div class="detailrow"><span>Full name</span><b>Melissa King</b></div><div class="detailrow"><span>Email</span><b>melissa@example.com <span class="muted">(demo)</span></b></div><div class="detailrow"><span>Workspace</span><b>DepSentry Starter</b></div><div class="detailrow"><span>Plan</span><b>Free · MVP prototype</b></div><div class="detailrow"><span>Data storage</span><b>Local browser storage</b></div>
       <div class="notice" style="margin-top:18px;margin-bottom:0"><strong>Prototype note:</strong> this is a simulated account view, not real authentication. A production version would need a backend, secure sign-in and server-side storage.</div>
     </div>
   </div>
