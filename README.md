@@ -7,7 +7,7 @@
 
 ## What the MVP does
 
-DepSentry is a browser-based dependency vulnerability checker for student developers, freelancers, and small software teams. A user uploads a dependency manifest or lockfile, DepSentry reads package names and exact versions in the browser, checks them against the live public **OSV.dev vulnerability API**, and produces a prioritised report with advisory links and available fixed-version guidance.
+DepSentry is a browser-based dependency vulnerability checker for student developers, freelancers, and small software teams. A user uploads a dependency manifest or lockfile, DepSentry reads package names and exact versions in the browser, checks them against the live public **OSV.dev vulnerability API**, and produces a prioritised report with advisory links and available fixed-version guidance. The interface is a static, dark-themed SaaS-style dashboard; no backend or credentials are required.
 
 ### Supported inputs
 - `package.json` — works when dependency versions are exact. If it uses ranges such as `^` or `~`, upload `package-lock.json` instead.
@@ -22,9 +22,10 @@ The MVP supports up to 150 dependencies per scan. It intentionally rejects missi
 1. Open **New scan** from the sidebar or dashboard.
 2. Enter a project name and upload a supported manifest, or paste dependency data.
 3. Press **Check dependencies**. DepSentry parses the file in the browser and queries OSV.dev for each exact package version.
-4. Review the findings sorted by severity and the combined update recommendation for each affected package. DepSentry selects the highest numeric fixed-version threshold reported across that package's advisories, shows a conservative **Low risk** / **May break** estimate based on the version line, and flags advisories without a published numeric fix.
-5. Export a JSON report or use **Save PDF** in the browser print dialog.
-6. Reopen previous reports from **Reports**. History is stored in the current browser only.
+4. Review per-package OSV.dev outcomes, vulnerabilities, severity, affected versions, advisory links, search/filter/sort controls, and the combined update recommendation for each affected package. DepSentry uses fixed-version thresholds present in OSV.dev data; it does not invent a fixed version. **Low risk** / **May break** is only an estimate based on the version line.
+5. Export a JSON/CSV report or use **Save PDF** in the browser print dialog.
+6. Reopen or delete previous reports in **Reports**. History is stored in the current browser only.
+7. Edit the local profile or scanning preferences in **My profile** and **Settings**. Neither page represents a registered or authenticated account.
 
 ## Privacy and data handling
 - The manifest is read locally in the browser; the original file and application source code are not uploaded to a DepSentry server.
@@ -34,14 +35,14 @@ The MVP supports up to 150 dependencies per scan. It intentionally rejects missi
 
 ## Run locally
 1. Extract the ZIP archive.
-2. Open `index.html` in a current version of Chrome, Edge, or Firefox.
+2. Open `index.html` in a current version of Chrome, Edge, or Firefox. If browser restrictions prevent API requests from a `file://` page, run `python -m http.server 8000` from this project directory and open `http://localhost:8000`.
 3. Select **New scan**, click **Load example**, then **Check dependencies**. An internet connection is required for live OSV.dev results.
 
 No framework, package installation, or build step is required. For the live API, use a modern browser and a network that permits HTTPS requests to `api.osv.dev`.
 
 ## Publish as a public demo
 1. Create a GitHub repository named `depsentry-mvp`.
-2. Upload all project files and the `docs/` folder from this archive, preserving the folder structure. The main site file is `index.html`.
+2. Upload the contents of the `depsentry-mvp` project directory, keeping `index.html`, `docs/`, `examples/`, and the Markdown guides at the repository root.
 3. In **Settings → Pages**, choose **Deploy from a branch**, branch `main`, folder `/ (root)`, and save.
 4. Wait for deployment and open `https://YOUR-USERNAME.github.io/depsentry-mvp/`.
 
@@ -49,13 +50,13 @@ GitHub Pages hosts the static interface. The live vulnerability checks are perfo
 
 ## Scope and limitations — be transparent in the presentation
 - This is a functional **MVP prototype**, not a production security product.
-- The account/profile screen is a demonstration profile, not real authentication.
+- The profile and settings are local browser preferences, not real authentication or an account.
 - There is no backend, cloud account, shared/team workspace, billing, or server-side report storage.
 - It checks known advisories returned by OSV.dev; an empty result does not prove a package is secure.
 - Combined update guidance compares same-major updates with broader release-branch upgrades and counts the findings each target is expected to address from OSV.dev data. If a complete target cannot be confirmed, the report says so. The Low risk / May break label is only an estimate based on likely breaking-change boundaries (major version, or minor version before 1.0), not a compatibility guarantee; re-scan and test updates before release.
 - The dashboard and report history show only scans actually completed in this browser; no sample vulnerabilities are mixed into live results.
 
-See `START_HERE_RU.md` for local launch and defense instructions, `docs/DEFENSE_GUIDE_RU.md` for a short oral-defense guide, `docs/PROJECT_STRUCTURE.md` for the code layout, and `MVP_VALIDATION.md` for the assignment-criteria checklist and validation plan.
+See `START_HERE_RU.md` for local launch and defense instructions, `docs/DEFENSE_GUIDE_RU.md` for a short oral-defense guide, `docs/PROJECT_STRUCTURE.md` for the code layout, `MVP_VALIDATION.md` for the assignment-criteria checklist and validation plan, and `docs/USER_TESTING.md` for the five-participant checklist and feedback template. No participant feedback is claimed unless the blank template is completed with actual test observations.
 
 ## References
 - OSV.dev. (n.d.). *API documentation*. https://google.github.io/osv.dev/api/

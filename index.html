@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>DepSentry — Dependency Security</title>
+<link rel="icon" type="image/svg+xml" href="./assets/depsentry-mark.svg">
 <style>
 :root{--bg:#f5f7fa;--panel:#fff;--ink:#182230;--muted:#667085;--line:#e4e8ee;--nav:#182635;--navmuted:#b7c2cf;--blue:#2864dc;--blue2:#edf3ff;--red:#b42318;--redbg:#fff0ef;--orange:#b54708;--orangebg:#fff4e5;--yellow:#946200;--green:#18794e;--greenbg:#eaf7ef;--shadow:0 2px 8px #172b4d08}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}.layout{min-height:100vh;display:grid;grid-template-columns:236px 1fr}.sidebar{background:var(--nav);color:white;padding:24px 14px;display:flex;flex-direction:column;min-height:100vh}.brand{display:flex;align-items:center;gap:10px;padding:0 12px 28px;font-size:19px;font-weight:750;letter-spacing:-.4px}.brandmark{width:31px;height:31px;background:#dce8ff;color:#214fba;border-radius:9px;display:grid;place-items:center;font-size:17px}.workspace{font-size:10px;color:#91a1b2;letter-spacing:1.4px;padding:0 12px 9px;font-weight:700}.nav{display:grid;gap:5px}.nav button{border:0;background:transparent;color:var(--navmuted);text-align:left;border-radius:8px;padding:11px 12px;display:flex;align-items:center;gap:12px}.nav button:hover,.nav button.active{background:#2a3b4f;color:white}.nav .ico{width:18px;text-align:center;font-size:16px}.sidebottom{margin-top:auto;border-top:1px solid #334353;padding:18px 9px 0}.plan{font-size:12px;color:#aebac7;line-height:1.6}.plan b{color:#fff}.upgrade{margin-top:12px;border:1px solid #536477;background:#293c51;color:#fff;border-radius:8px;padding:9px 11px;width:100%;text-align:left}.user-mini{display:flex;gap:10px;align-items:center;padding:20px 7px 0}.avatar{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#dce8ff;color:#234b9c;font-weight:800;font-size:12px;flex-shrink:0}.user-mini b{font-size:12px;display:block}.user-mini small{color:#aebac7;font-size:11px}.main{min-width:0}.topbar{height:72px;background:var(--panel);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 34px;gap:16px}.crumb{color:var(--muted);font-size:13px}.crumb b{color:var(--ink);font-weight:650}.topright{display:flex;align-items:center;gap:14px}.status{font-size:12px;color:var(--green);display:flex;align-items:center;gap:7px}.dot{width:7px;height:7px;border-radius:50%;background:#24a267}.iconbtn{border:1px solid var(--line);background:white;border-radius:8px;padding:8px 11px;color:#526071}.content{max-width:1220px;margin:0 auto;padding:32px 34px 48px}.page{display:none}.page.active{display:block}.heading{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;margin-bottom:25px}.eyebrow{font-size:11px;letter-spacing:1.2px;color:#718096;font-weight:750;text-transform:uppercase;margin-bottom:7px}h1{font-size:27px;line-height:1.2;letter-spacing:-.7px;margin:0 0 8px;font-weight:750}h2{font-size:17px;margin:0 0 5px;letter-spacing:-.2px}h3{font-size:14px;margin:0 0 8px}.sub{color:var(--muted);margin:0;max-width:650px}.btn{border:1px solid var(--line);border-radius:8px;background:white;color:#344054;padding:10px 14px;font-weight:650;display:inline-flex;gap:8px;align-items:center;justify-content:center}.btn.primary{background:var(--blue);color:white;border-color:var(--blue)}.btn.primary:hover{background:#1e50b6}.btn:disabled{opacity:.6;cursor:wait}.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;margin-bottom:22px}.card,.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow)}.metric{padding:19px}.metric-top{display:flex;align-items:center;justify-content:space-between;color:var(--muted);font-size:12px;margin-bottom:12px}.metric-value{font-size:29px;letter-spacing:-1px;font-weight:750;line-height:1.1}.metric-note{font-size:11px;color:var(--muted);margin-top:8px}.metric-icon{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;background:#f1f4f8;color:#516074;font-size:16px}.metric-icon.red{background:var(--redbg);color:var(--red)}.metric-icon.orange{background:var(--orangebg);color:var(--orange)}.metric-icon.green{background:var(--greenbg);color:var(--green)}.grid2{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(280px,1fr);gap:18px}.panel{padding:21px;min-width:0}.panel-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:17px}.panel-head p{margin:3px 0 0;color:var(--muted);font-size:12px}.textbtn{border:0;background:transparent;color:var(--blue);font-weight:650;padding:5px}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;white-space:nowrap}th{text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.7px;color:#7b8796;font-weight:750;padding:11px 9px;border-bottom:1px solid var(--line)}td{padding:13px 9px;border-bottom:1px solid #edf0f4;font-size:12px}tbody tr:last-child td{border-bottom:0}.pkg{font-weight:700;color:#243247}.version{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;color:#596579;font-size:11px}.badge{display:inline-flex;align-items:center;border-radius:5px;padding:4px 7px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.3px}.badge.critical{color:var(--red);background:var(--redbg)}.badge.high{color:#a34108;background:var(--orangebg)}.badge.medium{color:var(--yellow);background:#fff8d9}.badge.low{color:var(--green);background:var(--greenbg)}.badge.clean{color:var(--green);background:var(--greenbg)}.muted{color:var(--muted)}.empty{padding:30px 12px;text-align:center;color:var(--muted)}.empty b{display:block;color:#344054;margin-bottom:5px}.quickbox{border:1px solid #dbe5f7;background:#f7f9ff;border-radius:10px;padding:17px;margin-bottom:13px}.quickbox h3{font-size:14px;margin-bottom:6px}.quickbox p{font-size:12px;color:var(--muted);margin:0 0 14px}.steps{display:grid;gap:14px}.step{display:flex;gap:12px;align-items:flex-start}.stepnum{width:25px;height:25px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;color:#586578;font-size:11px;font-weight:750;flex-shrink:0}.step b{display:block;font-size:12px;margin-bottom:2px}.step p{font-size:11px;color:var(--muted);margin:0}.tagline{font-size:11px;color:#718096;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:grid;gap:7px;margin-bottom:15px}.field label{font-size:12px;font-weight:700;color:#344054}.field input,.field select,.field textarea{width:100%;border:1px solid #d6dce5;border-radius:8px;padding:11px 12px;background:#fff;color:var(--ink);outline:none}.field textarea{min-height:210px;font:12px/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;resize:vertical}.field input:focus,.field select:focus,.field textarea:focus{border-color:#6b91e8;box-shadow:0 0 0 3px #2864dc15}.helper{font-size:11px;color:var(--muted);margin-top:-2px}.notice{border-radius:8px;background:#f5f7fa;border:1px solid var(--line);padding:12px 14px;color:#586579;font-size:12px;margin:14px 0}.notice strong{color:#344054}.scan-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.spinner{width:13px;height:13px;border:2px solid #ffffff77;border-top-color:white;border-radius:50%;display:inline-block;animation:spin .7s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}.results-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}.mini-stat{padding:13px;border:1px solid var(--line);border-radius:9px}.mini-stat span{display:block;font-size:11px;color:var(--muted)}.mini-stat b{display:block;font-size:21px;margin-top:4px}.finding{border:1px solid var(--line);border-radius:10px;margin-top:11px;overflow:hidden}.finding-head{padding:14px 15px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.finding-name{font-weight:750;font-size:14px}.finding-meta{font-size:11px;color:var(--muted);margin-top:3px}.finding-body{padding:0 15px 15px;color:#536174;font-size:12px}.finding-body p{margin:0 0 9px}.fixline{background:#f4f7fb;border-radius:7px;padding:9px 10px;font-size:11px;color:#334155}.source-link{color:var(--blue);text-decoration:none;font-weight:650}.source-link:hover{text-decoration:underline}.risk-note{font-size:11px;color:var(--muted);margin-top:12px}.report-toolbar{display:flex;gap:8px;flex-wrap:wrap}.profile{display:grid;grid-template-columns:250px minmax(0,1fr);gap:18px}.profile-card{text-align:center;padding:28px 18px}.avatar.big{width:68px;height:68px;margin:0 auto 13px;font-size:20px}.profile-card h2{margin-bottom:4px}.profile-card p{font-size:12px;color:var(--muted);margin:0}.planbox{border:1px solid var(--line);border-radius:9px;padding:15px;text-align:left;margin-top:22px}.planbox b{display:block;font-size:13px}.planbox span{font-size:11px;color:var(--muted)}.profile-details{padding:23px}.detailrow{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);font-size:12px}.detailrow:last-child{border-bottom:0}.detailrow span:first-child{color:var(--muted)}.toast{position:fixed;right:25px;bottom:25px;background:#172635;color:white;border-radius:9px;padding:12px 16px;box-shadow:0 10px 30px #0002;max-width:360px;z-index:10;display:none}.toast.show{display:block}.smallprint{font-size:10px;color:var(--muted);margin-top:14px}.mobilehead{display:none}
@@ -17,7 +18,7 @@
 :root{--bg:#f5f7fc;--panel:#fff;--ink:#152239;--muted:#64748b;--line:#e2e8f0;--nav:#0b1424;--navmuted:#a5b4cc;--blue:#4f46e5;--blue2:#eef2ff;--shadow:0 4px 26px rgba(24,39,75,.035)}
 body{background:var(--bg)}
 .sidebar{background:linear-gradient(178deg,#0c1426 0%,#172342 100%);border-right:1px solid #ffffff15}
-.brand{font-size:22px;letter-spacing:-.9px}.brandmark{background:linear-gradient(135deg,#818cf8,#22d3ee);color:#fff;border-radius:11px;font-weight:800;box-shadow:0 4px 20px #6366f155}
+.brand{font-size:22px;letter-spacing:-.9px}.brandmark{width:38px;height:38px;object-fit:contain;display:block;border-radius:10px;box-shadow:0 4px 20px #2563eb44;flex:none}
 .nav{gap:8px}.nav button{border:1px solid transparent;font-weight:600;padding:12px 14px;transition:.15s}.nav button:hover,.nav button.active{background:#e0e7ff17;border-color:#a5b4fc32;color:#fff}
 .topbar{background:#ffffffed;backdrop-filter:blur(12px)}
 .content{max-width:1400px;padding-top:38px}h1{font-size:31px;font-weight:800;letter-spacing:-1.25px}h2{font-weight:750}
@@ -29,41 +30,239 @@ button:focus-visible,select:focus-visible,a:focus-visible,input:focus-visible,.d
 .report-toolbar{align-items:center}.feedback-form{margin-top:22px;background:#fbfcff}
 @media(max-width:680px){.heading{flex-direction:column}.topbar{height:auto;min-height:62px;padding:12px 16px}.topright{flex-wrap:wrap}.report-toolbar{flex-wrap:wrap}.content{padding:22px 15px}.panel{padding:16px}.formgrid,.results-summary{grid-template-columns:1fr 1fr}.profile{grid-template-columns:1fr}.dropzone{padding:16px}.heading h1{font-size:26px}}
 @media print{.sidebar,.topbar,.heading,.scan-actions,.dropzone,.feedback-form,.report-toolbar,.smallprint,.risk-note,.notice,.toast{display:none!important}.layout{display:block}.content{padding:0}.page{display:none!important}#page-scan{display:block!important}#page-scan>.panel:first-of-type{display:none!important}#scanResults{display:block!important;border:0;box-shadow:none}.finding,.panel{break-inside:avoid}details.advisory-list> *{display:block!important}.advisory-list{display:block}}
+</style><style>
+:root{
+ --bg:#070b16;--panel:#101727;--ink:#edf2ff;--muted:#93a2bd;--line:#25314a;
+ --nav:#080d19;--navmuted:#a3b0c9;--blue:#8b7bff;--blue2:#201d3f;
+ --red:#ff667d;--redbg:#351a2a;--orange:#ffad66;--orangebg:#34251d;
+ --yellow:#f6d575;--green:#51d5a0;--greenbg:#12342d;
+ --shadow:0 12px 35px #02061766;
+ color-scheme:dark;
+}
+html{scroll-behavior:smooth}
+body{background:radial-gradient(ellipse at 75% -20%,#2b1d55 0,transparent 36%),var(--bg);color:var(--ink)}
+.layout{grid-template-columns:252px minmax(0,1fr)}
+.sidebar{position:sticky;top:0;height:100vh;padding:25px 16px;background:linear-gradient(180deg,#0b1020,#090d18 65%,#11112a);border-right:1px solid #25213c}
+.brand{font-size:21px;letter-spacing:-.8px;padding-bottom:34px}
+.brandmark{background:linear-gradient(145deg,#8b7bff,#3ba5ff);color:white;border-radius:10px;box-shadow:0 5px 20px #6555f644}
+.workspace{color:#71809d}
+.nav{gap:7px}
+.nav button{color:#a7b3ca;padding:12px 13px;border:1px solid transparent;transition:background .18s,border-color .18s,color .18s,transform .18s}
+.nav button:hover,.nav button.active{background:linear-gradient(100deg,#252044,#191d37);border-color:#5544a344;color:#fff;transform:translateX(2px)}
+.nav button.active:before{content:"";position:absolute;left:0;width:3px;height:24px;border-radius:4px;background:#9b8cff}
+.nav button{position:relative}
+.nav .ico{color:#9e94ff}
+.sidebottom{border-color:#242a40}
+.plan{color:#91a0b9}.plan b{color:#e5e9f4}
+.user-mini{padding-top:17px}
+.avatar{background:#28234c;color:#c9c1ff}
+.main{min-width:0}
+.topbar{height:74px;background:#090e1bd9;border-bottom:1px solid #202a40;backdrop-filter:blur(16px);padding:0 38px}
+.crumb{color:#8392ae}.crumb b{color:#eff3ff}
+.status{color:#71d7b0}.dot{background:#51d5a0;box-shadow:0 0 12px #51d5a099}
+.iconbtn{background:#111a2b;color:#d6def0;border-color:#2b3751}
+.content{max-width:1480px;padding:38px 38px 58px}
+h1{font-size:32px;letter-spacing:-1.1px;font-weight:780}
+h2{font-size:18px;color:#f1f4ff;font-weight:720}
+h3{color:#eef2ff}
+.eyebrow{color:#9b8cff;letter-spacing:1.35px}
+.sub,.panel-head p,.metric-note,.helper,.smallprint,.tagline{color:#91a0ba}
+.card,.panel{background:linear-gradient(145deg,#111a2c,#0f1625);border-color:#25314a;border-radius:15px;box-shadow:var(--shadow)}
+.metric{padding:21px;transition:transform .2s,border-color .2s,box-shadow .2s}
+.metric:hover{transform:translateY(-3px);border-color:#6656aa;box-shadow:0 16px 36px #060813aa}
+.metric-top{color:#a8b5cc}
+.metric-value{font-size:32px;color:#f2f4ff}
+.metric-icon{background:#252140;color:#a89cff}
+.metric-icon.red{background:#351a2a;color:#ff7188}
+.metric-icon.orange{background:#35261d;color:#ffad66}
+.metric-icon.green{background:#12342d;color:#51d5a0}
+.grid2{gap:18px}
+.panel{padding:22px}
+.panel-head{align-items:flex-start}
+th{color:#8594b0;border-color:#28344b}
+td{color:#d2d9e8;border-color:#222d43}
+.pkg{color:#eef2ff}
+.version{color:#aebcda}
+.badge{border:1px solid transparent;border-radius:999px}
+.badge.critical{color:#ff8294;background:#3a1c2c;border-color:#713046}
+.badge.high{color:#ffb071;background:#39261d;border-color:#694027}
+.badge.medium{color:#f4d875;background:#352f1c;border-color:#625523}
+.badge.low{color:#8ed6ff;background:#152d40;border-color:#24506b}
+.badge.unknown{color:#b4c0d5;background:#252e42;border-color:#3a4862}
+.badge.clean{color:#73e0b5;background:#14352e;border-color:#245b4b}
+.empty{color:#a0aec4}
+.empty b{color:#e2e8f5}
+.quickbox{border-color:#38305f;background:linear-gradient(135deg,#211d3d,#151b30);border-radius:12px}
+.quickbox p,.step p{color:#9ba9c0}
+.stepnum{border-color:#3a4560;color:#aebbd2}
+.field label{color:#dce4f3}
+.field input,.field select,.field textarea{background:#0b1220;color:#eef2ff;border-color:#303c55;border-radius:9px}
+.field input::placeholder,.field textarea::placeholder{color:#697993}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:#9587ff;box-shadow:0 0 0 3px #8b7bff24}
+.btn,.iconbtn{background:#131c2d;color:#d9e1f2;border-color:#303c55;border-radius:9px;transition:background .18s,transform .18s,border-color .18s,box-shadow .18s}
+.btn:hover,.iconbtn:hover{background:#1b2740;border-color:#566789;transform:translateY(-1px)}
+.btn.primary{background:linear-gradient(120deg,#7365ee,#4f8dff);border-color:#7569ed;color:#fff;box-shadow:0 6px 20px #6658ed30}
+.btn.primary:hover{background:linear-gradient(120deg,#8274ff,#5a9cff);box-shadow:0 8px 26px #6658ed4a}
+.textbtn{color:#a99dff}
+.textbtn:hover{color:#d0caff}
+.danger-link{color:#ff8194}
+.notice{color:#a8b6ce;background:#111b2d;border-color:#2d3a54}
+.notice strong{color:#eef2ff}
+.dropzone{background:linear-gradient(135deg,#111a2e,#171832);border:1px dashed #5e59a0;color:#e5e7ff;border-radius:13px}
+.dropzone span{color:#9ca9c0}
+.dropzone:hover,.dropzone.dragover,.dropzone:focus{background:#1b1b38;border-color:#a193ff}
+.results-summary{gap:11px}
+.mini-stat{background:#0b1220;border-color:#29354c;border-radius:10px}
+.mini-stat span{color:#97a5bc}
+.mini-stat b{color:#f1f4ff}
+.finding{background:#0d1422;border-color:#2b3750;border-radius:12px}
+.finding-head{background:#111a2b}
+.finding-meta{color:#96a4bb}
+.finding-body{color:#c0cadd}
+.source-link{color:#a99dff}
+.source-link:hover{color:#d1caff}
+.update-plan{background:linear-gradient(145deg,#17172f,#111a2a)}
+.update-plan>p,.plan-detail,.plan-caveat{color:#9eabc1}
+.plan-item{border-color:#2d3850}
+.plan-level,.plan-title{color:#dbe3f2}
+.risk-tag.low{color:#7ee1b8;background:#14352e}
+.risk-tag.breaking{color:#ffc081;background:#39261d}
+.advisory-list>summary{color:#e8edfa;background:#111a2b;border-color:#303c55;border-radius:9px}
+.feedback-form{background:#0d1422}
+.profile-card,.profile-details{background:linear-gradient(145deg,#111a2c,#0f1625)}
+.planbox{background:#0c1322;border-color:#2a3650;color:#dbe3f2}
+.planbox span,.profile-card>p{color:#99a8bf}
+.profile-card{color:#ecf0fa}
+.report-toolbar{gap:8px;flex-wrap:wrap}
+.risk-note{color:#a6b3c8}
+.smallprint{border-top-color:#26324a}
+.toast{background:#1b2540;color:#eef2ff;border:1px solid #46527a;box-shadow:0 8px 30px #0008}
+.danger-link:hover{color:#ffb0bd}
+button:focus-visible,select:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,.dropzone:focus-visible{outline:3px solid #a99dff;outline-offset:3px}
+.risk-distribution{display:grid;gap:12px;margin:17px 0 20px}
+body.compact-tables td{padding-top:8px;padding-bottom:8px}
+body.reduce-motion,body.reduce-motion *{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}
+.risk-row{display:grid;grid-template-columns:88px minmax(0,1fr) 34px;gap:10px;align-items:center;font-size:12px;color:#c0cadd}
+.risk-track{height:8px;border-radius:9px;background:#202a40;overflow:hidden}
+.risk-fill{height:100%;border-radius:inherit;min-width:0;transition:width .35s ease}
+.risk-fill.critical{background:#ff667d}.risk-fill.high{background:#ffad66}.risk-fill.medium{background:#f6d575}.risk-fill.low{background:#51d5a0}.risk-fill.unknown{background:#8797b3}
+.risk-row strong{text-align:right;color:#eef2ff}
+.risk-label{display:flex;align-items:center;gap:7px}
+.risk-label:before{content:"";width:7px;height:7px;border-radius:50%;background:var(--risk-color)}
+.risk-label.critical{--risk-color:#ff667d}.risk-label.high{--risk-color:#ffad66}.risk-label.medium{--risk-color:#f6d575}.risk-label.low{--risk-color:#51d5a0}.risk-label.unknown{--risk-color:#8797b3}
+.dependency-table{margin-top:16px}
+.dependency-state{font-size:11px}
+.dependency-state.reported{color:#ffb071}.dependency-state.none{color:#8ed6ff}
+.result-controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:15px 0}
+.result-controls label{font-size:12px;color:#a8b5cc}
+.result-controls input,.result-controls select{margin-left:5px;padding:8px 10px;background:#0b1220;color:#eef2ff;border:1px solid #303c55;border-radius:8px}
+.scan-progress{margin:14px 0 0}
+.scan-progress[hidden]{display:none}
+.scan-progress-label{font-size:12px;color:#b8c5da;display:flex;justify-content:space-between;margin-bottom:7px}
+.progress-track{height:7px;background:#202a40;border-radius:8px;overflow:hidden}
+.progress-fill{height:100%;width:0;background:linear-gradient(90deg,#7768f1,#50b6ff);transition:width .2s;border-radius:inherit}
+.settings-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.setting-card{padding:18px;border:1px solid #2a3650;background:#0c1322;border-radius:11px}
+.setting-card .field{margin:0}
+.toggle-row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid #27334a}
+.toggle-row:last-child{border-bottom:0}
+.toggle-row b{display:block;color:#e8edfa;font-size:13px}
+.toggle-row small{color:#95a4bc}
+.toggle-row input{width:18px;height:18px;accent-color:#8b7bff}
+.profile{gap:18px}
+.profile-card{border-color:#29354c}
+.planbox{border-color:#2d3953}
+.scan-actions{gap:9px}
+@media(max-width:1050px){
+ .layout{grid-template-columns:218px minmax(0,1fr)}
+ .topbar{padding:0 24px}.content{padding:30px 24px 48px}
+ .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:760px){
+ .layout{display:block}
+ .sidebar{position:relative;top:auto;height:auto;min-height:0;padding:13px 15px 10px;border-right:0;border-bottom:1px solid #25213c}
+ .brand{padding:0 4px 12px}
+ .workspace,.sidebottom{display:none}
+ .nav{display:flex;overflow-x:auto;gap:6px;padding-bottom:2px;scrollbar-width:thin}
+ .nav button{white-space:nowrap;flex:0 0 auto;padding:9px 11px;font-size:12px}
+ .nav button:hover,.nav button.active{transform:none}
+ .nav button.active:before{display:none}
+ .nav .ico{width:auto}
+ .topbar{height:auto;min-height:58px;padding:10px 16px}
+ .topright{gap:8px}.status{font-size:11px}
+ .content{padding:24px 16px 40px}
+ .heading{flex-direction:column;gap:12px}
+ .heading h1{font-size:26px}
+ .grid2{grid-template-columns:1fr}
+ .formgrid{grid-template-columns:1fr}
+ .profile{grid-template-columns:1fr}
+ .settings-grid{grid-template-columns:1fr}
+ .report-toolbar{align-items:flex-start}
+ .panel{padding:17px}
+}
+@media(max-width:480px){
+ .topbar{align-items:flex-start;flex-direction:column}
+ .topright{width:100%;justify-content:space-between}
+ .cards{grid-template-columns:1fr 1fr;gap:10px}
+ .metric{padding:15px}.metric-value{font-size:26px}
+ .metric-top{font-size:11px}
+ .results-summary{grid-template-columns:1fr 1fr}
+ .result-controls{align-items:stretch}
+ .result-controls label{width:100%}
+ .result-controls input,.result-controls select{max-width:100%;margin-top:6px;margin-left:0}
+ .risk-row{grid-template-columns:76px minmax(0,1fr) 28px}
+}
+@media(prefers-reduced-motion:reduce){
+ html{scroll-behavior:auto}
+ *,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
+@media print{
+ :root{color-scheme:light}
+ body{background:#fff!important;color:#111!important}
+ .sidebar,.topbar,.heading,.scan-actions,.dropzone,.feedback-form,.report-toolbar,.smallprint,.risk-note,.notice,.toast,.result-controls{display:none!important}
+ .layout{display:block}.content{padding:0}.page{display:none!important}#page-scan{display:block!important}
+ #page-scan>.panel:not(#scanResults){display:none!important}
+ #scanResults{display:block!important;background:#fff!important;color:#111!important;border:0;box-shadow:none}
+ .finding,.panel,.mini-stat{break-inside:avoid;background:#fff!important;color:#111!important;border-color:#ccc!important}
+ .finding-head{background:#f5f5f5!important}.finding-body,.finding-meta,.mini-stat span{color:#333!important}
+ details.advisory-list>*{display:block!important}.advisory-list{display:block}
+}
 </style></head>
 <body>
 <div class="layout">
 <aside class="sidebar">
-  <div class="brand"><span class="brandmark">⌁</span> DepSentry</div>
+  <div class="brand"><img class="brandmark" src="./assets/depsentry-mark.svg" alt=""> DepSentry</div>
   <div class="workspace">WORKSPACE</div>
   <nav class="nav" aria-label="Main navigation">
     <button class="active" data-page="dashboard"><span class="ico">▦</span> Overview</button>
     <button data-page="scan"><span class="ico">⌕</span> New scan</button>
     <button data-page="reports"><span class="ico">▤</span> Reports</button>
-    <button data-page="account"><span class="ico">◉</span> My account</button>
+    <button data-page="account"><span class="ico">◉</span> My profile</button>
+    <button data-page="settings"><span class="ico">⚙</span> Settings</button>
   </nav>
   <div class="sidebottom">
-    <div class="plan">CURRENT PLAN<br><b>Starter · Free</b><br>Basic dependency checks</div>
-    <button class="upgrade" id="upgradeBtn">☆ &nbsp; Explore Pro</button>
-    <div class="user-mini"><div class="avatar" id="sideAvatar">DS</div><div><b id="sideName">DepSentry User</b><small>Local workspace</small></div></div>
+    <div class="plan">LOCAL WORKSPACE<br><b>No account sign-in</b><br>Preferences and reports stay in this browser.</div>
+    <div class="user-mini"><div class="avatar" id="sideAvatar">LP</div><div><b id="sideName">Local profile</b><small>Local workspace</small></div></div>
   </div>
 </aside>
 <div class="main">
-<header class="topbar"><div class="crumb">Workspace / <b id="crumb">Overview</b></div><div class="topright"><span class="status"><span class="dot"></span> Local workspace</span><button class="iconbtn" id="topNew">＋ New scan</button></div></header>
+<header class="topbar"><div class="crumb"><span id="workspaceCrumb">My Workspace</span> / <b id="crumb">Overview</b></div><div class="topright"><span class="status"><span class="dot"></span> Local workspace</span><button class="iconbtn" id="topNew">＋ New scan</button></div></header>
 <main class="content">
 <section class="page active" id="page-dashboard">
   <div class="heading"><div><div class="eyebrow">Workspace overview</div><h1>Your dependency security, at a glance</h1><p class="sub">Keep track of vulnerable dependencies and decide what needs attention first.</p></div><button class="btn primary" data-goto="scan">＋ Start a new scan</button></div>
   <div class="cards">
-    <div class="card metric"><div class="metric-top">Total scans <span class="metric-icon">⌕</span></div><div class="metric-value" id="mScans">3</div><div class="metric-note">Scans saved in this browser</div></div>
-    <div class="card metric"><div class="metric-top">Vulnerabilities found <span class="metric-icon red">!</span></div><div class="metric-value" id="mVulns">8</div><div class="metric-note">Across your saved scan reports</div></div>
-    <div class="card metric"><div class="metric-top">Critical issues <span class="metric-icon orange">⚑</span></div><div class="metric-value" id="mCritical">2</div><div class="metric-note">Prioritise these first</div></div>
-    <div class="card metric"><div class="metric-top">Latest scan <span class="metric-icon green">✓</span></div><div class="metric-value" style="font-size:19px;padding-top:6px" id="mLatest">Today</div><div class="metric-note">Most recent report</div></div>
+    <div class="card metric"><div class="metric-top">Scans saved <span class="metric-icon">⌕</span></div><div class="metric-value" id="mScans">0</div><div class="metric-note">Completed OSV.dev reports in this browser</div></div>
+    <div class="card metric"><div class="metric-top">Package checks <span class="metric-icon">◈</span></div><div class="metric-value" id="mPackages">0</div><div class="metric-note">Distinct package versions checked</div></div>
+    <div class="card metric"><div class="metric-top">Advisory matches <span class="metric-icon red">!</span></div><div class="metric-value" id="mVulns">0</div><div class="metric-note">Across saved reports; repeat scans count again</div></div>
+    <div class="card metric"><div class="metric-top">Critical / high <span class="metric-icon orange">⚑</span></div><div class="metric-value" id="mCritical">0</div><div class="metric-note">Prioritise high-impact findings first</div></div>
   </div>
   <div class="grid2">
     <div class="panel"><div class="panel-head"><div><h2>Recent scans</h2><p>Your latest dependency checks</p></div><button class="textbtn" data-goto="reports">View all →</button></div>
       <div class="tablewrap"><table><thead><tr><th>Project</th><th>Packages</th><th>Findings</th><th>Scanned</th><th></th></tr></thead><tbody id="recentRows"></tbody></table></div>
     </div>
-    <div class="panel"><div class="panel-head"><div><h2>Recommended next steps</h2><p>Make dependency updates less risky</p></div></div>
-      <div class="quickbox"><h3>Start with the highest risk</h3><p>Review critical and high-severity findings before updating less risky packages.</p><button class="btn" data-goto="reports">Review reports →</button></div>
+    <div class="panel"><div class="panel-head"><div><h2>Risk distribution</h2><p>Severity counts across saved scan reports</p></div><button class="textbtn" data-goto="reports">Open reports →</button></div>
+      <div class="risk-distribution" id="riskDistribution" aria-label="Vulnerability severity distribution"></div>
+      <div class="quickbox"><h3>Recommended next step</h3><p id="dashboardAdvice">Run a dependency scan to get evidence-based update recommendations.</p><button class="btn primary" data-goto="scan">Start a scan →</button></div>
       <div class="steps">
         <div class="step"><div class="stepnum">1</div><div><b>Check your dependency list</b><p>Use package.json / package-lock.json, requirements.txt, or pom.xml. Source code is not needed.</p></div></div>
         <div class="step"><div class="stepnum">2</div><div><b>Review the recommended fix</b><p>Check the affected version and open the original advisory.</p></div></div>
@@ -97,10 +296,13 @@ For pom.xml, upload the Maven file.'></textarea><div class="helper">Supported in
     <div class="scan-actions"><button class="btn primary" id="runScan">⌕ &nbsp; Check dependencies</button><button class="btn" id="loadExample">Load example</button><button class="btn" id="resetInput" type="button">Clear input</button><label class="btn" for="fileInput">↑ &nbsp; Choose file</label><input id="fileInput" type="file" accept=".json,.txt,.in,.xml" hidden></div>
     <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Upload a dependency file by dropping it here or pressing Enter"><strong>Drop a dependency file here</strong><span>or click to select a .json, .txt, .in or .xml file (max 1 MB)</span></div><div class="notice"><strong>Privacy by design.</strong> This browser-only prototype reads the dependency list locally and sends package names and versions to OSV.dev to look up public vulnerability records when the API is reachable. It does not upload source code. Do not paste secrets or private source files.</div>
     <div id="scanError" class="notice" hidden role="alert"></div>
+    <div id="scanProgress" class="scan-progress" hidden role="status" aria-live="polite"><div class="scan-progress-label"><span id="scanProgressText">Preparing scan…</span><span id="scanProgressCount"></span></div><div class="progress-track"><div class="progress-fill" id="scanProgressFill"></div></div></div>
   </div>
   <div id="scanResults" class="panel" style="margin-top:18px" hidden>
     <div class="panel-head"><div><div class="eyebrow">Scan results</div><h2 id="resultsTitle">Dependency report</h2><p id="resultsDesc"></p></div><div class="report-toolbar"><button class="btn" id="downloadJson">Export JSON</button><button class="btn" id="downloadCsv">Export CSV</button><button class="btn primary" id="printReport">Save PDF</button></div></div>
-    <div class="results-summary" id="resultStats"></div><div id="findingsList"></div>
+    <div class="results-summary" id="resultStats"></div>
+    <div class="panel dependency-table"><div class="panel-head"><div><h3>Dependency check results</h3><p>“No matching records” is not proof that a package is secure.</p></div></div><div class="tablewrap"><table><thead><tr><th>Package</th><th>Version</th><th>Ecosystem</th><th>OSV.dev result</th></tr></thead><tbody id="dependencyRows"></tbody></table></div></div>
+    <div id="findingsList"></div>
     <section class="panel feedback-form" aria-labelledby="feedbackTitle">
       <h3 id="feedbackTitle">Quick feedback</h3><p class="muted" style="font-size:12px;margin:0 0 14px">Help us improve the report. Answers are saved only in this browser and are not sent anywhere.</p>
       <form id="feedbackForm"><div class="field"><label for="testerId">Participant ID (for user testing)</label><input id="testerId" maxlength="40" placeholder="e.g. Tester 01" required><div class="helper">Use anonymous IDs. Do not enter private personal information.</div></div>
@@ -124,13 +326,24 @@ For pom.xml, upload the Maven file.'></textarea><div class="helper">Supported in
 <section class="page" id="page-account">
   <div class="heading"><div><div class="eyebrow">Local workspace settings</div><h1>My workspace</h1><p class="sub">Personalize the browser-only workspace. No login or server account is required.</p></div></div>
   <div class="profile">
-    <div class="panel profile-card"><div class="avatar big" id="profileAvatar">DS</div><h2 id="profileName">DepSentry User</h2><p>Local workspace · no signup</p><div class="planbox"><b>Starter plan <span class="badge clean" style="float:right">ACTIVE</span></b><span>Free dependency checks and local reports</span></div></div>
+    <div class="panel profile-card"><div class="avatar big" id="profileAvatar">LP</div><h2 id="profileName">Local profile</h2><p>Local workspace · no sign-in</p><div class="planbox"><b>Browser-only workspace</b><span>No account, paid plan, or cloud storage is connected.</span></div></div>
     <div class="panel profile-details"><h2>Workspace preferences</h2><p class="muted" style="font-size:12px;margin:3px 0 15px">Changes are saved to this browser only.</p>
       <form id="profileForm"><div class="field"><label for="displayName">Display name</label><input id="displayName" maxlength="60" placeholder="e.g. Student Developer" required></div>
       <div class="field"><label for="workspaceName">Workspace name</label><input id="workspaceName" maxlength="60" placeholder="e.g. Cybersecurity Lab" required></div>
       <button type="submit" class="btn primary">Save preferences</button></form>
       <div class="notice"><strong>Privacy note:</strong> this is not a registered user account. Reports, feedback, and preferences live only in your browser. Use the Reports backup button before clearing browser data.</div>
     </div>
+  </div>
+</section>
+
+<section class="page" id="page-settings">
+  <div class="heading"><div><div class="eyebrow">Local preferences</div><h1>Settings</h1><p class="sub">These controls apply in this browser only. They do not change saved scans or profile information.</p></div></div>
+  <div class="panel"><div class="panel-head"><div><h2>Scanning preferences</h2><p>Choose defaults for this workspace.</p></div></div>
+    <div class="settings-grid">
+      <div class="setting-card"><div class="field"><label for="defaultEcosystem">Default dependency format</label><select id="defaultEcosystem"><option value="auto">Detect automatically</option><option value="npm">Node.js · npm</option><option value="PyPI">Python · PyPI</option><option value="Maven">Java · Maven</option><option value="manual">Manual package list</option></select><span class="helper">Used to preselect the format on the New scan page.</span></div></div>
+      <div class="setting-card"><div class="toggle-row"><div><b>Compact tables</b><small>Reduce row spacing in scan and report tables.</small></div><input id="compactTables" type="checkbox" aria-label="Use compact tables"></div><div class="toggle-row"><div><b>Reduce motion</b><small>Disable most animations and smooth scrolling.</small></div><input id="reduceMotion" type="checkbox" aria-label="Reduce motion"></div></div>
+    </div>
+    <div class="scan-actions" style="margin-top:18px"><button id="saveSettings" class="btn primary" type="button">Save settings</button><button id="resetSettings" class="btn" type="button">Reset settings</button><span id="settingsStatus" class="muted" role="status"></span></div>
   </div>
 </section>
 </main>
@@ -140,24 +353,34 @@ For pom.xml, upload the Maven file.'></textarea><div class="helper">Supported in
 const $=id=>document.getElementById(id);
 const STORAGE='depsentry_mvp_reports_v2',FEEDBACK_STORAGE='depsentry_mvp_feedback_v1';
 let currentReport=null;
-const PROFILE_STORAGE='depsentry_profile_v1';
-function getReports(){try{return JSON.parse(localStorage.getItem(STORAGE)||'[]')}catch(e){return []}}
-function setReports(r){try{localStorage.setItem(STORAGE,JSON.stringify(r))}catch(e){toast('Browser storage is full. Export your report before closing this page.')}}
+const PROFILE_STORAGE='depsentry_profile_v1',SETTINGS_STORAGE='depsentry_settings_v1';
+let reportStorageFault=false;
+function getReports(){
+ try{const parsed=JSON.parse(localStorage.getItem(STORAGE)||'[]');if(!Array.isArray(parsed))throw new Error('Stored report history must be a list.');reportStorageFault=false;return parsed}
+ catch(error){reportStorageFault=true;console.error('Could not read the saved report history.',error);toast('Saved reports could not be read. Existing browser data was not changed.');return []}
+}
+function setReports(r){
+ if(reportStorageFault){toast('Reports were not changed because saved history could not be read. Export or inspect the existing browser data before retrying.');return false}
+ try{localStorage.setItem(STORAGE,JSON.stringify(r));return true}
+ catch(error){console.error('Could not write saved report history.',error);toast('Report history could not be saved in this browser. Export this report before closing the page.');return false}
+}
 function allReports(){return getReports()}
 function toast(s){let t=$('toast');t.textContent=s;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3200)}
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function page(name){document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id==='page-'+name));document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===name));$('crumb').textContent=({dashboard:'Overview',scan:'New scan',reports:'Reports',account:'My account'})[name]||name;window.scrollTo({top:0,behavior:'smooth'});if(name==='reports')renderReports();if(name==='account')renderProfile()}
+function page(name){document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id==='page-'+name));document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===name));$('crumb').textContent=({dashboard:'Overview',scan:'New scan',reports:'Reports',account:'My profile',settings:'Settings'})[name]||name;window.scrollTo({top:0,behavior:document.body.classList.contains('reduce-motion')||window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});if(name==='reports')renderReports();if(name==='account')renderProfile();if(name==='settings')renderSettings()}
 document.querySelectorAll('[data-page]').forEach(b=>b.onclick=()=>page(b.dataset.page));
 document.querySelectorAll('[data-goto]').forEach(b=>b.onclick=()=>page(b.dataset.goto));
 $('topNew').onclick=()=>page('scan');
-$('upgradeBtn').onclick=()=>toast('Pro plan is a concept for this MVP. Paid features are not connected.');
-function severity(v){let s=String(v||'').toLowerCase();if(s==='critical')return'critical';if(s==='high')return'high';if(s==='medium'||s==='moderate')return'medium';return'low'}
+function severity(v){let s=String(v||'').toLowerCase();if(s==='critical')return'critical';if(s==='high')return'high';if(s==='medium'||s==='moderate')return'medium';if(s==='low')return'low';return'unknown'}
 function dateShort(d){return new Date(d).toLocaleDateString(undefined,{day:'numeric',month:'short',year:'numeric'})}
 function renderDashboard(){
- let real=getReports(),findings=real.reduce((n,r)=>n+(r.findings||0),0),crit=real.reduce((n,r)=>n+(r.critical||0),0),rr=real;
- $('mScans').textContent=real.length;$('mVulns').textContent=findings;$('mCritical').textContent=crit;
- $('mLatest').textContent=real.length?dateShort(real[0].created):'—';
- let list=rr.slice().sort((a,b)=>new Date(b.created||0)-new Date(a.created||0)).slice(0,5);
+ let real=getReports(),findings=real.flatMap(r=>r.items||[]),crit=findings.filter(x=>x.severity==='critical'||x.severity==='high').length;
+ let packages=new Set(real.flatMap(r=>(r.dependencies||[]).map(d=>`${d.ecosystem}:${d.name.toLowerCase()}@${d.version}`)));
+ $('mScans').textContent=real.length;$('mPackages').textContent=packages.size;$('mVulns').textContent=findings.length;$('mCritical').textContent=crit;
+ const levels=['critical','high','medium','low','unknown'],counts=Object.fromEntries(levels.map(level=>[level,findings.filter(x=>x.severity===level).length])),max=Math.max(1,...Object.values(counts));
+ $('riskDistribution').innerHTML=levels.map(level=>`<div class="risk-row"><span class="risk-label ${level}">${level[0].toUpperCase()+level.slice(1)}</span><div class="risk-track" role="img" aria-label="${counts[level]} ${level} advisory matches"><div class="risk-fill ${level}" style="width:${counts[level]/max*100}%"></div></div><strong>${counts[level]}</strong></div>`).join('');
+ $('dashboardAdvice').textContent=real.length?crit?`${crit} critical/high advisory match(es) across saved scans. Open a report to review OSV.dev evidence and available update thresholds.`:'No critical/high advisory matches in saved scans. Review full advisory details and remember that no matches do not prove a package is secure.':'Run a dependency scan to get evidence-based update recommendations.';
+ let list=real.slice().sort((a,b)=>new Date(b.created||0)-new Date(a.created||0)).slice(0,5);
  $('recentRows').innerHTML=list.length?list.map(r=>`<tr><td><span class="pkg">${esc(r.project)}</span><br><span class="muted">Live OSV.dev scan</span></td><td>${r.packages}</td><td><span class="badge ${r.findings?'high':'clean'}">${r.findings} findings</span></td><td>${esc(r.date||dateShort(r.created))}</td><td><button class="textbtn" onclick="openReport('${esc(r.id)}')">View →</button></td></tr>`).join(''):'<tr><td colspan="5" class="muted">No scans yet. Start your first scan to populate this dashboard.</td></tr>'; 
 }
 function renderReports(){
@@ -189,7 +412,7 @@ function parseDeps(text,choice){
      deps=Object.entries(p).map(([name,v])=>({name,version:exactVersion(v),ecosystem:'npm'}));
    }catch(e){
      if(raw.startsWith('{')||raw.startsWith('['))throw new Error('Invalid JSON. Check brackets and commas in your package file.');
-     let p={};raw.split(/\r?\n/).forEach(line=>{let m=line.match(/^\s*["']?(@?[^"'@\s:]+(?:\/[^"'@\s:]+)?)['"]?\s*[:=]\s*["']?([^"',\s}]+)/);if(m)p[m[1]]=m[2]});
+     let p={};raw.split(/\r?\n/).forEach(line=>{let m=line.match(/^\s*["']?(@?[^"'@\s:]+(?:\/[^"'@\s:]+)?)['"]?\s*(?:[:=@]|\s)\s*["']?([^"',\s}]+)/);if(m)p[m[1]]=m[2]});
      deps=Object.entries(p).map(([name,v])=>({name,version:exactVersion(v),ecosystem:'npm'}));
    }
  }else if(ecosystem==='PyPI'){
@@ -229,7 +452,7 @@ const dropzone=$('dropzone');dropzone.onclick=()=>$('fileInput').click();dropzon
 for(const ev of ['dragenter','dragover'])dropzone.addEventListener(ev,e=>{e.preventDefault();dropzone.classList.add('dragover')});
 for(const ev of ['dragleave','drop'])dropzone.addEventListener(ev,e=>{e.preventDefault();dropzone.classList.remove('dragover')});
 dropzone.addEventListener('drop',e=>handleInputFile(e.dataTransfer?.files?.[0]));
-async function osvBatch(deps){
+async function osvBatch(deps,onProgress=()=>{}){
  const valid=deps.filter(d=>d.version);
  if(!valid.length)throw new Error('Add exact versions, for example lodash 4.17.15 or requests==2.19.0.');
  const rows=[];
@@ -241,6 +464,7 @@ async function osvBatch(deps){
      const data=await res.json();return {dependency:d,vulns:data.vulns||[]};
    }));
    rows.push(...answers);
+   onProgress(Math.min(i+batch.length,valid.length),valid.length);
  }
  return rows;
 }
@@ -319,8 +543,16 @@ function transform(data){
   return {...best,aliases:[...new Set(group.flatMap(item=>item.aliases))],affected,fixes,links,merged:group.reduce((n,item)=>n+item.merged,0)};
  }).sort((a,b)=>(RISK_ORDER[a.severity]??4)-(RISK_ORDER[b.severity]??4)||a.name.localeCompare(b.name));
 }
-let findingFilter='all',findingPackage='all',showAllFindings=false,allAdvisoriesOpen=false;
+let findingFilter='all',findingPackage='all',findingQuery='',findingSort='severity',showAllFindings=false,allAdvisoriesOpen=false;
 function affectedDependencies(item){return item.affected||[{name:item.name,version:item.version,ecosystem:item.ecosystem,fix:item.fix,url:item.url}]}
+function renderDependencyResults(items){
+ const vulnerable=new Set(items.flatMap(item=>affectedDependencies(item).map(d=>`${d.ecosystem}:${d.name.toLowerCase()}@${d.version}`)));
+ const rows=(currentReport.dependencies||[]).slice().sort((a,b)=>a.name.localeCompare(b.name));
+ $('dependencyRows').innerHTML=rows.map(dep=>{
+  const found=vulnerable.has(`${dep.ecosystem}:${dep.name.toLowerCase()}@${dep.version}`);
+  return `<tr><td class="pkg">${esc(dep.name)}</td><td class="version">${esc(dep.version)}</td><td>${esc(dep.ecosystem)}</td><td><span class="dependency-state ${found?'reported':'none'}">${found?'Vulnerability record(s) returned':'No matching records returned'}</span></td></tr>`;
+ }).join('')||'<tr><td colspan="4" class="muted">No dependencies are available in this report.</td></tr>';
+}
 function fixCandidates(dependency){
  const values=Array.isArray(dependency.fixes)?dependency.fixes:Array.isArray(dependency.fixCandidates)?dependency.fixCandidates:(dependency.fix?[dependency.fix]:[]);
  return [...new Set(values.filter(value=>releaseParts(value)&&compareRelease(value,dependency.version)>0))];
@@ -385,24 +617,31 @@ function renderFindings(items){
  const counts={critical:0,high:0,medium:0,low:0,unknown:0};items.forEach(x=>counts[x.severity]=(counts[x.severity]||0)+1);
  const checked=new Set((currentReport.dependencies||[]).map(d=>`${d.ecosystem}:${d.name.toLowerCase()}@${d.version}`));
  const vulnerable=new Set(items.flatMap(x=>affectedDependencies(x).map(d=>`${d.ecosystem}:${d.name.toLowerCase()}@${d.version}`)));
- $('resultStats').innerHTML=`<div class="mini-stat"><span>Packages checked</span><b>${currentReport.packages}</b></div><div class="mini-stat"><span>Unique advisories</span><b>${items.length}</b></div><div class="mini-stat"><span>Critical / High</span><b>${counts.critical+counts.high}</b></div><div class="mini-stat"><span>Clean in this check</span><b>${Math.max(0,checked.size-vulnerable.size)}</b></div>`;
+ $('resultStats').innerHTML=`<div class="mini-stat"><span>Packages checked</span><b>${currentReport.packages}</b></div><div class="mini-stat"><span>Advisory matches</span><b>${items.length}</b></div><div class="mini-stat"><span>Critical / High</span><b>${counts.critical+counts.high}</b></div><div class="mini-stat"><span>No matching records</span><b>${Math.max(0,checked.size-vulnerable.size)}</b></div>`;
+ renderDependencyResults(items);
  const holder=$('findingsList');
- if(!items.length){holder.innerHTML='<div class="empty"><b>No matching vulnerability records returned</b>This does not prove the packages are secure.</div>';return}
  const names=[...new Set(items.flatMap(x=>affectedDependencies(x).map(d=>d.name)))];
- const filtered=items.filter(x=>(findingFilter==='all'||x.severity===findingFilter)&&(findingPackage==='all'||affectedDependencies(x).some(d=>d.name===findingPackage)));
- const visible=showAllFindings?filtered:filtered.slice(0,8);
+ const query=findingQuery.trim().toLowerCase();
+ const filtered=items.filter(x=>(findingFilter==='all'||x.severity===findingFilter)&&(findingPackage==='all'||affectedDependencies(x).some(d=>d.name===findingPackage))&&(!query||[x.id,x.summary,...affectedDependencies(x).flatMap(d=>[d.name,d.version,d.ecosystem])].join(' ').toLowerCase().includes(query)));
+ const sorted=filtered.slice().sort((a,b)=>findingSort==='package'?affectedDependencies(a)[0].name.localeCompare(affectedDependencies(b)[0].name):findingSort==='id'?String(a.id).localeCompare(String(b.id)):(RISK_ORDER[a.severity]??4)-(RISK_ORDER[b.severity]??4)||affectedDependencies(a)[0].name.localeCompare(affectedDependencies(b)[0].name));
+ const visible=showAllFindings?sorted:sorted.slice(0,8);
  const plans=buildPlans(items).filter(plan=>findingPackage==='all'||plan.name===findingPackage);
  const planSummary=planHTML(plans);
- holder.innerHTML=`<div class="panel update-plan"><h3>Recommended actions</h3><p>Start with the least disruptive update that closes the most findings; consider a broader upgrade for complete coverage.</p>${planSummary}</div>
- <div class="scan-actions" style="margin:15px 0">
- <label>Severity <select id="riskFilter" style="padding:8px"><option value="all">All levels</option>${['critical','high','medium','low','unknown'].map(s=>`<option value="${s}" ${findingFilter===s?'selected':''}>${s}</option>`).join('')}</select></label>
- <label>Package <select id="packageFilter" style="padding:8px"><option value="all">All packages</option>${names.map(s=>`<option value="${esc(s)}" ${findingPackage===s?'selected':''}>${esc(s)}</option>`).join('')}</select></label>
- </div><details class="advisory-list"${allAdvisoriesOpen?' open':''}><summary>All advisories (${filtered.length})</summary><p class="risk-note">Showing ${visible.length} of ${filtered.length} matching advisories</p>`+
+ holder.innerHTML=`<div class="result-controls">
+ <label>Search <input id="findingSearch" type="search" value="${esc(findingQuery)}" placeholder="Package, advisory ID, description"></label>
+ <label>Severity <select id="riskFilter"><option value="all">All levels</option>${['critical','high','medium','low','unknown'].map(s=>`<option value="${s}" ${findingFilter===s?'selected':''}>${s}</option>`).join('')}</select></label>
+ <label>Package <select id="packageFilter"><option value="all">All packages</option>${names.map(s=>`<option value="${esc(s)}" ${findingPackage===s?'selected':''}>${esc(s)}</option>`).join('')}</select></label>
+ <label>Sort <select id="findingSort"><option value="severity" ${findingSort==='severity'?'selected':''}>Severity</option><option value="package" ${findingSort==='package'?'selected':''}>Package name</option><option value="id" ${findingSort==='id'?'selected':''}>Advisory ID</option></select></label>
+ </div>`+(items.length?`<div class="panel update-plan"><h3>Recommended actions</h3><p>Start with the least disruptive update that closes the most findings; consider a broader upgrade for complete coverage.</p>${planSummary}</div>
+ <details class="advisory-list"${allAdvisoriesOpen?' open':''}><summary>Matching advisories (${sorted.length})</summary><p class="risk-note">Showing ${visible.length} of ${sorted.length} matching advisories</p>`+
  visible.map(renderFinding).join('')+
- (!showAllFindings&&filtered.length>8?'<button class="btn" id="showAllFindings" style="margin-top:14px">Show all '+filtered.length+' findings</button>':'')+'</details>';
+ (!showAllFindings&&sorted.length>8?'<button class="btn" id="showAllFindings" style="margin-top:14px">Show all '+sorted.length+' findings</button>':'')+'</details>'
+ :'<div class="empty"><b>No matching vulnerability records returned</b>This does not prove the packages are secure. The per-package results above distinguish missing matches from reported vulnerabilities.</div>');
+ $('findingSearch').oninput=e=>{findingQuery=e.target.value;const cursor=e.target.selectionStart;showAllFindings=false;renderFindings(items);$('findingSearch').focus();$('findingSearch').setSelectionRange(cursor,cursor)};
  $('riskFilter').onchange=e=>{findingFilter=e.target.value;showAllFindings=false;renderFindings(items)};
  $('packageFilter').onchange=e=>{findingPackage=e.target.value;showAllFindings=false;renderFindings(items)};
- $('findingsList').querySelector('.advisory-list').ontoggle=e=>{allAdvisoriesOpen=e.target.open};
+ $('findingSort').onchange=e=>{findingSort=e.target.value;renderFindings(items)};
+ const advisoryList=holder.querySelector('.advisory-list');if(advisoryList)advisoryList.ontoggle=e=>{allAdvisoriesOpen=e.target.open};
  if($('showAllFindings'))$('showAllFindings').onclick=()=>{showAllFindings=true;allAdvisoriesOpen=true;renderFindings(items)};
 }
 async function runScan(){
@@ -413,14 +652,15 @@ async function runScan(){
  let unpinned=deps.filter(d=>!d.version);if(unpinned.length){err.innerHTML='<strong>Exact versions are needed for a reliable check.</strong> '+unpinned.length+' dependency/dependencies do not have an exact version. For npm, upload package-lock.json when package.json uses ranges such as ^ or ~. In requirements.txt use package==version. In pom.xml specify a concrete version. No scan was saved.';err.hidden=false;return}
  let btn=$('runScan');btn.disabled=true;btn.innerHTML='<span class="spinner"></span> Checking...';
  $('scanResults').hidden=true;
+ $('scanProgress').hidden=false;$('scanProgressFill').style.width='0%';$('scanProgressText').textContent='Connecting to OSV.dev…';$('scanProgressCount').textContent=`0 / ${deps.length}`;
  let findings=[],source='OSV.dev';
- try{let data=await osvBatch(deps);findings=transform(data)}
+ try{let data=await osvBatch(deps,(done,total)=>{$('scanProgressText').textContent='Checking package versions with OSV.dev…';$('scanProgressCount').textContent=`${done} / ${total}`;$('scanProgressFill').style.width=`${Math.round(done/total*100)}%`});findings=transform(data)}
  catch(e){err.innerHTML='<strong>Live vulnerability lookup failed.</strong> No demo findings were substituted and no report was saved. Check your internet connection or try again later. '+esc(e.message||'OSV.dev could not be reached.');err.hidden=false;return}
- finally{btn.disabled=false;btn.innerHTML='⌕ &nbsp; Check dependencies'}
+ finally{btn.disabled=false;btn.innerHTML='⌕ &nbsp; Check dependencies';$('scanProgress').hidden=true}
  let now=new Date(),report={id:'scan-'+Date.now(),project:$('projectName').value.trim()||'Untitled project',ecosystem:parsed.ecosystem,packages:deps.length,findings:findings.length,critical:findings.filter(x=>x.severity==='critical').length,created:now.toISOString(),date:dateShort(now),items:findings,source,dependencies:deps};
- currentReport=report;let saved=getReports();saved.unshift(report);setReports(saved);$('feedbackForm').reset();$('feedbackStatus').textContent='';
+ currentReport=report;let saved=getReports();saved.unshift(report);const persisted=setReports(saved);$('feedbackForm').reset();$('feedbackStatus').textContent='';
  $('resultsTitle').textContent=report.project+' · scan report';$('resultsDesc').textContent=`${report.packages} packages checked · ${dateShort(now)} · Source: ${source}`;
- findingFilter='all';findingPackage='all';showAllFindings=false;allAdvisoriesOpen=false;renderFindings(findings);$('scanResults').hidden=false;$('scanResults').scrollIntoView({behavior:'smooth',block:'start'});renderDashboard();toast('Scan report created');
+ findingFilter='all';findingPackage='all';findingQuery='';findingSort='severity';showAllFindings=false;allAdvisoriesOpen=false;renderFindings(findings);$('scanResults').hidden=false;$('scanResults').scrollIntoView({behavior:'smooth',block:'start'});renderDashboard();renderReports();toast(persisted?'Scan report created':'Scan complete, but the report was not saved to browser history');
 }
 function saveFeedback(event){
  event.preventDefault();
@@ -458,17 +698,34 @@ $('exportFeedback').onclick=()=>{
  feedback.forEach(f=>rows.push([f.testerId||'Not recorded',f.reportId,getReports().find(r=>r.id===f.reportId)?.project||'',f.created,f.actionable,f.risk,f.missing]));
  downloadFile(csv(rows),'depsentry-user-feedback.csv','text/csv;charset=utf-8');
 };
-$('exportBackup').onclick=()=>{const obj={exportedAt:new Date().toISOString(),reports:getReports(),feedback:JSON.parse(localStorage.getItem(FEEDBACK_STORAGE)||'[]')};downloadFile(JSON.stringify(obj,null,2),'depsentry-backup.json','application/json')};
-function deleteReport(id){const r=getReports().find(x=>x.id===id);if(!r)return;if(!confirm('Delete report for '+r.project+'? This cannot be undone.'))return;setReports(getReports().filter(x=>x.id!==id));if(currentReport?.id===id){currentReport=null;$('scanResults').hidden=true}renderReports();renderDashboard();toast('Report deleted')}
+$('exportBackup').onclick=()=>{let feedback;try{feedback=JSON.parse(localStorage.getItem(FEEDBACK_STORAGE)||'[]');if(!Array.isArray(feedback))throw new Error('Stored feedback must be a list.')}catch(error){console.error('Could not read feedback for the local backup.',error);toast('Backup was not created because saved feedback could not be read.');return}const obj={exportedAt:new Date().toISOString(),reports:getReports(),feedback};if(reportStorageFault)return;downloadFile(JSON.stringify(obj,null,2),'depsentry-backup.json','application/json')};
+function deleteReport(id){const reports=getReports(),r=reports.find(x=>x.id===id);if(!r)return;if(!confirm('Delete report for '+r.project+'? This cannot be undone.'))return;if(!setReports(reports.filter(x=>x.id!==id)))return;if(currentReport?.id===id){currentReport=null;$('scanResults').hidden=true}renderReports();renderDashboard();toast('Report deleted')}
 window.deleteReport=deleteReport;
-function getProfile(){try{return {...{displayName:'DepSentry User',workspaceName:'My Workspace'},...JSON.parse(localStorage.getItem(PROFILE_STORAGE)||'{}')}}catch(e){return {displayName:'DepSentry User',workspaceName:'My Workspace'}}}
-function renderProfile(){const p=getProfile();$('displayName').value=p.displayName;$('workspaceName').value=p.workspaceName;$('profileName').textContent=p.displayName;$('sideName').textContent=p.displayName;const initials=p.displayName.split(/\s+/).slice(0,2).map(s=>s[0]||'').join('').toUpperCase();$('profileAvatar').textContent=initials;$('sideAvatar').textContent=initials;document.querySelector('.crumb').firstChild.textContent=p.workspaceName+' / '}
-$('profileForm').onsubmit=e=>{e.preventDefault();const profile={displayName:$('displayName').value.trim(),workspaceName:$('workspaceName').value.trim()};if(!profile.displayName||!profile.workspaceName)return;try{localStorage.setItem(PROFILE_STORAGE,JSON.stringify(profile));renderProfile();toast('Preferences saved in this browser')}catch(err){toast('Unable to save preferences')}};
+function getProfile(){try{return {...{displayName:'',workspaceName:'My Workspace'},...JSON.parse(localStorage.getItem(PROFILE_STORAGE)||'{}')}}catch(e){console.error('Could not read the local profile preferences.',e);toast('Profile preferences could not be read. Existing reports are unchanged.');return {displayName:'',workspaceName:'My Workspace'}}}
+function renderProfile(){const p=getProfile(),displayName=String(p.displayName||'').trim(),label=displayName||'Local profile';$('displayName').value=displayName;$('workspaceName').value=p.workspaceName;$('profileName').textContent=label;$('sideName').textContent=label;const initials=displayName?displayName.split(/\s+/).slice(0,2).map(s=>s[0]||'').join('').toUpperCase():'LP';$('profileAvatar').textContent=initials;$('sideAvatar').textContent=initials;$('workspaceCrumb').textContent=p.workspaceName}
+$('profileForm').onsubmit=e=>{e.preventDefault();const profile={displayName:$('displayName').value.trim(),workspaceName:$('workspaceName').value.trim()};if(!profile.displayName||!profile.workspaceName)return;try{localStorage.setItem(PROFILE_STORAGE,JSON.stringify(profile));renderProfile();toast('Local profile preferences saved')}catch(err){console.error('Could not save local profile preferences.',err);toast('Unable to save profile preferences in this browser')}};
+const DEFAULT_SETTINGS={defaultEcosystem:'auto',compactTables:false,reduceMotion:false};
+function getSettings(){
+ try{
+  const saved=JSON.parse(localStorage.getItem(SETTINGS_STORAGE)||'{}');
+  if(!saved||typeof saved!=='object'||Array.isArray(saved))throw new Error('Stored settings have an invalid format.');
+  return {...DEFAULT_SETTINGS,...saved,defaultEcosystem:['auto','npm','PyPI','Maven','manual'].includes(saved.defaultEcosystem)?saved.defaultEcosystem:DEFAULT_SETTINGS.defaultEcosystem,compactTables:saved.compactTables===true,reduceMotion:saved.reduceMotion===true};
+ }catch(error){console.error('Could not read local settings.',error);toast('Settings could not be read; defaults are active. Saved reports were not changed.');return {...DEFAULT_SETTINGS}}
+}
+function applySettings(settings){document.body.classList.toggle('compact-tables',settings.compactTables);document.body.classList.toggle('reduce-motion',settings.reduceMotion);$('ecosystem').value=settings.defaultEcosystem}
+function renderSettings(){const settings=getSettings();$('defaultEcosystem').value=settings.defaultEcosystem;$('compactTables').checked=settings.compactTables;$('reduceMotion').checked=settings.reduceMotion;applySettings(settings)}
+function saveSettings(){
+ const settings={defaultEcosystem:$('defaultEcosystem').value,compactTables:$('compactTables').checked,reduceMotion:$('reduceMotion').checked};
+ try{localStorage.setItem(SETTINGS_STORAGE,JSON.stringify(settings));applySettings(settings);$('settingsStatus').textContent='Saved locally';toast('Settings saved in this browser')}
+ catch(error){console.error('Could not save local settings.',error);$('settingsStatus').textContent='Could not save settings';toast('Settings were not saved. Check browser storage settings.')}
+}
+$('saveSettings').onclick=saveSettings;
+$('resetSettings').onclick=()=>{if(!confirm('Reset workspace settings to their defaults? Your profile and saved reports will not be changed.'))return;try{localStorage.removeItem(SETTINGS_STORAGE);renderSettings();$('settingsStatus').textContent='Defaults restored';toast('Settings reset. Reports and profile were kept.')}catch(error){console.error('Could not reset local settings.',error);toast('Settings could not be reset in this browser.')}};
 function slug(s){return String(s||'report').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'report'}
-function downloadFile(content,name,type){let a=document.createElement('a'),url=URL.createObjectURL(new Blob([content],{type}));a.href=url;a.download=name;a.click();URL.revokeObjectURL(url)}
+function downloadFile(content,name,type){const url=URL.createObjectURL(new Blob([content],{type})),a=document.createElement('a');a.href=url;a.download=name;a.hidden=true;document.body.appendChild(a);a.click();setTimeout(()=>{a.remove();URL.revokeObjectURL(url)},1000)}
 function openReport(id){let r=allReports().find(x=>x.id===id);if(!r){toast('Report not found');return}currentReport=r;page('scan');$('projectName').value=r.project;$('resultsTitle').textContent=r.project+' · scan report';$('resultsDesc').textContent=`${r.packages} packages checked · ${r.date} · Source: ${r.source}`;findingFilter='all';findingPackage='all';showAllFindings=false;allAdvisoriesOpen=false;renderFindings(r.items||[]);$('feedbackForm').reset();$('feedbackStatus').textContent='';$('scanResults').hidden=false;setTimeout(()=>$('scanResults').scrollIntoView({behavior:'smooth'}),100)}
 window.openReport=openReport;
-$('clearHistory').onclick=()=>{if(confirm('Clear all scan reports and related feedback saved in this browser?')){setReports([]);try{localStorage.removeItem(FEEDBACK_STORAGE)}catch(error){console.error('Could not clear locally saved feedback.',error);toast('Reports cleared, but feedback could not be removed from browser storage.');return}renderReports();renderDashboard();toast('Local report history and feedback cleared')}};
-renderProfile();renderDashboard();renderReports();
+$('clearHistory').onclick=()=>{if(!confirm('Clear all scan reports and related feedback saved in this browser?'))return;if(!setReports([]))return;try{localStorage.removeItem(FEEDBACK_STORAGE)}catch(error){console.error('Could not clear locally saved feedback.',error);toast('Reports cleared, but feedback could not be removed from browser storage.');return}renderReports();renderDashboard();toast('Local report history and feedback cleared')};
+renderProfile();renderSettings();renderDashboard();renderReports();
 </script>
 </body></html>
