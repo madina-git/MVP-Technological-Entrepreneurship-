@@ -12,6 +12,23 @@
 </style>
 <style>
 .update-plan{padding:16px;margin:12px 0}.update-plan>p{margin:4px 0 12px;color:var(--muted);font-size:12px}.plan-item{padding:12px 0;border-top:1px solid var(--line)}.plan-item:first-of-type{border-top:0}.plan-title{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-weight:750}.risk-tag{display:inline-flex;align-items:center;border-radius:5px;padding:4px 7px;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.3px}.risk-tag.low{color:var(--green);background:var(--greenbg)}.risk-tag.breaking{color:var(--orange);background:var(--orangebg)}.plan-detail{margin-top:5px;color:#536174;font-size:12px}.plan-caveat{margin-top:5px;color:var(--muted);font-size:11px}.plan-level{margin-top:7px}.advisory-list{margin-top:14px}.advisory-list>summary{cursor:pointer;font-weight:750;color:#344054;padding:12px;border:1px solid var(--line);border-radius:8px;background:#fff}.feedback-form{padding:16px;margin-top:16px}.feedback-form .field select,.feedback-form .field textarea{font-size:12px}.feedback-form textarea{min-height:75px}
+</style><style>
+/* DepSentry final MVP visual polish */
+:root{--bg:#f5f7fc;--panel:#fff;--ink:#152239;--muted:#64748b;--line:#e2e8f0;--nav:#0b1424;--navmuted:#a5b4cc;--blue:#4f46e5;--blue2:#eef2ff;--shadow:0 4px 26px rgba(24,39,75,.035)}
+body{background:var(--bg)}
+.sidebar{background:linear-gradient(178deg,#0c1426 0%,#172342 100%);border-right:1px solid #ffffff15}
+.brand{font-size:22px;letter-spacing:-.9px}.brandmark{background:linear-gradient(135deg,#818cf8,#22d3ee);color:#fff;border-radius:11px;font-weight:800;box-shadow:0 4px 20px #6366f155}
+.nav{gap:8px}.nav button{border:1px solid transparent;font-weight:600;padding:12px 14px;transition:.15s}.nav button:hover,.nav button.active{background:#e0e7ff17;border-color:#a5b4fc32;color:#fff}
+.topbar{background:#ffffffed;backdrop-filter:blur(12px)}
+.content{max-width:1400px;padding-top:38px}h1{font-size:31px;font-weight:800;letter-spacing:-1.25px}h2{font-weight:750}
+.card,.panel{border-color:#e6eaf2;border-radius:16px;box-shadow:var(--shadow)}.metric{padding:22px}.metric-value{font-size:34px}.metric-icon{background:#eef2ff;color:#4f46e5}
+.btn,.iconbtn{border-radius:10px;transition:background .15s,transform .15s,box-shadow .15s}.btn:hover,.iconbtn:hover{background:#f1f5f9;transform:translateY(-1px)}.btn.primary{background:linear-gradient(125deg,#4f46e5,#6366f1);border-color:#4f46e5;box-shadow:0 4px 12px #4f46e526}.btn.primary:hover{background:#4338ca;box-shadow:0 6px 18px #4f46e53a}
+.textbtn:hover{color:#312e81;text-decoration:underline}.danger-link{color:#b42318}
+.dropzone{cursor:pointer;text-align:center;border:2px dashed #bdc9e6;border-radius:12px;padding:22px;background:linear-gradient(120deg,#f8faff,#f0f4ff);color:#334155;margin:15px 0;transition:.18s}.dropzone strong{display:block;font-size:14px}.dropzone span{display:block;margin-top:3px;color:#64748b;font-size:12px}.dropzone:hover,.dropzone.dragover,.dropzone:focus{border-color:#6366f1;background:#eef2ff;outline:none}
+button:focus-visible,select:focus-visible,a:focus-visible,input:focus-visible,.dropzone:focus-visible{outline:3px solid #a5b4fc;outline-offset:2px}
+.report-toolbar{align-items:center}.feedback-form{margin-top:22px;background:#fbfcff}
+@media(max-width:680px){.heading{flex-direction:column}.topbar{height:auto;min-height:62px;padding:12px 16px}.topright{flex-wrap:wrap}.report-toolbar{flex-wrap:wrap}.content{padding:22px 15px}.panel{padding:16px}.formgrid,.results-summary{grid-template-columns:1fr 1fr}.profile{grid-template-columns:1fr}.dropzone{padding:16px}.heading h1{font-size:26px}}
+@media print{.sidebar,.topbar,.heading,.scan-actions,.dropzone,.feedback-form,.report-toolbar,.smallprint,.risk-note,.notice,.toast{display:none!important}.layout{display:block}.content{padding:0}.page{display:none!important}#page-scan{display:block!important}#page-scan>.panel:first-of-type{display:none!important}#scanResults{display:block!important;border:0;box-shadow:none}.finding,.panel{break-inside:avoid}details.advisory-list> *{display:block!important}.advisory-list{display:block}}
 </style></head>
 <body>
 <div class="layout">
@@ -27,14 +44,14 @@
   <div class="sidebottom">
     <div class="plan">CURRENT PLAN<br><b>Starter · Free</b><br>Basic dependency checks</div>
     <button class="upgrade" id="upgradeBtn">☆ &nbsp; Explore Pro</button>
-    <div class="user-mini"><div class="avatar">MK</div><div><b>Melissa King</b><small>Workspace owner</small></div></div>
+    <div class="user-mini"><div class="avatar" id="sideAvatar">DS</div><div><b id="sideName">DepSentry User</b><small>Local workspace</small></div></div>
   </div>
 </aside>
 <div class="main">
-<header class="topbar"><div class="crumb">Workspace / <b id="crumb">Overview</b></div><div class="topright"><span class="status"><span class="dot"></span> Demo workspace</span><button class="iconbtn" id="topNew">＋ New scan</button></div></header>
+<header class="topbar"><div class="crumb">Workspace / <b id="crumb">Overview</b></div><div class="topright"><span class="status"><span class="dot"></span> Local workspace</span><button class="iconbtn" id="topNew">＋ New scan</button></div></header>
 <main class="content">
 <section class="page active" id="page-dashboard">
-  <div class="heading"><div><div class="eyebrow">Workspace overview</div><h1>Good evening, Melissa</h1><p class="sub">Keep track of vulnerable dependencies and decide what needs attention first.</p></div><button class="btn primary" data-goto="scan">＋ Start a new scan</button></div>
+  <div class="heading"><div><div class="eyebrow">Workspace overview</div><h1>Your dependency security, at a glance</h1><p class="sub">Keep track of vulnerable dependencies and decide what needs attention first.</p></div><button class="btn primary" data-goto="scan">＋ Start a new scan</button></div>
   <div class="cards">
     <div class="card metric"><div class="metric-top">Total scans <span class="metric-icon">⌕</span></div><div class="metric-value" id="mScans">3</div><div class="metric-note">Scans saved in this browser</div></div>
     <div class="card metric"><div class="metric-top">Vulnerabilities found <span class="metric-icon red">!</span></div><div class="metric-value" id="mVulns">8</div><div class="metric-note">Across your saved scan reports</div></div>
@@ -77,16 +94,16 @@ requests==2.19.0
 flask==1.0.0
 
 For pom.xml, upload the Maven file.'></textarea><div class="helper">Supported inputs: package.json, package-lock.json, requirements.txt, pom.xml, or a name/version list. Vulnerability checks need exact package versions; ranges are not treated as exact versions.</div></div>
-    <div class="scan-actions"><button class="btn primary" id="runScan">⌕ &nbsp; Check dependencies</button><button class="btn" id="loadExample">Load example</button><label class="btn" for="fileInput">↑ &nbsp; Choose file</label><input id="fileInput" type="file" accept=".json,.txt,.in,.xml" hidden></div>
-    <div class="notice"><strong>Privacy by design.</strong> This browser-only prototype reads the dependency list locally and sends package names and versions to OSV.dev to look up public vulnerability records when the API is reachable. It does not upload source code. Do not paste secrets or private source files.</div>
+    <div class="scan-actions"><button class="btn primary" id="runScan">⌕ &nbsp; Check dependencies</button><button class="btn" id="loadExample">Load example</button><button class="btn" id="resetInput" type="button">Clear input</button><label class="btn" for="fileInput">↑ &nbsp; Choose file</label><input id="fileInput" type="file" accept=".json,.txt,.in,.xml" hidden></div>
+    <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Upload a dependency file by dropping it here or pressing Enter"><strong>Drop a dependency file here</strong><span>or click to select a .json, .txt, .in or .xml file (max 1 MB)</span></div><div class="notice"><strong>Privacy by design.</strong> This browser-only prototype reads the dependency list locally and sends package names and versions to OSV.dev to look up public vulnerability records when the API is reachable. It does not upload source code. Do not paste secrets or private source files.</div>
     <div id="scanError" class="notice" hidden role="alert"></div>
   </div>
   <div id="scanResults" class="panel" style="margin-top:18px" hidden>
-    <div class="panel-head"><div><div class="eyebrow">Scan results</div><h2 id="resultsTitle">Dependency report</h2><p id="resultsDesc"></p></div><div class="report-toolbar"><button class="btn" id="downloadJson">Export JSON</button><button class="btn primary" id="printReport">Save PDF</button></div></div>
+    <div class="panel-head"><div><div class="eyebrow">Scan results</div><h2 id="resultsTitle">Dependency report</h2><p id="resultsDesc"></p></div><div class="report-toolbar"><button class="btn" id="downloadJson">Export JSON</button><button class="btn" id="downloadCsv">Export CSV</button><button class="btn primary" id="printReport">Save PDF</button></div></div>
     <div class="results-summary" id="resultStats"></div><div id="findingsList"></div>
     <section class="panel feedback-form" aria-labelledby="feedbackTitle">
       <h3 id="feedbackTitle">Quick feedback</h3><p class="muted" style="font-size:12px;margin:0 0 14px">Help us improve the report. Answers are saved only in this browser and are not sent anywhere.</p>
-      <form id="feedbackForm">
+      <form id="feedbackForm"><div class="field"><label for="testerId">Participant ID (for user testing)</label><input id="testerId" maxlength="40" placeholder="e.g. Tester 01" required><div class="helper">Use anonymous IDs. Do not enter private personal information.</div></div>
         <div class="field"><label for="feedbackActionable">1. Is it clear what to update first?</label><select id="feedbackActionable" required><option value="">Choose an answer</option><option>Yes</option><option>Partly</option><option>No</option></select></div>
         <div class="field"><label for="feedbackRisk">2. Is the Low risk / May break label useful and understandable?</label><select id="feedbackRisk" required><option value="">Choose an answer</option><option>Yes</option><option>Partly</option><option>No</option></select></div>
         <div class="field"><label for="feedbackMissing">3. What is confusing or missing?</label><textarea id="feedbackMissing" maxlength="1000" placeholder="Optional"></textarea></div>
@@ -99,18 +116,20 @@ For pom.xml, upload the Maven file.'></textarea><div class="helper">Supported in
 
 <section class="page" id="page-reports">
   <div class="heading"><div><div class="eyebrow">Saved activity</div><h1>Reports</h1><p class="sub">Review previous scans saved in this browser. You can reopen a report or export it.</p></div><button class="btn primary" data-goto="scan">＋ New scan</button></div>
-  <div class="panel"><div class="panel-head"><div><h2>Scan history</h2><p id="reportCount">Reports created in this browser</p></div><button class="btn" id="clearHistory">Clear history</button></div>
+  <div class="panel"><div class="panel-head"><div><h2>Scan history</h2><p id="reportCount">Reports created in this browser</p></div><div class="report-toolbar"><button class="btn" id="exportFeedback">Export feedback CSV</button><button class="btn" id="exportBackup">Backup reports</button><button class="btn" id="clearHistory">Clear history</button></div></div>
   <div class="tablewrap"><table><thead><tr><th>Project</th><th>Format</th><th>Packages</th><th>Findings</th><th>Critical</th><th>Date</th><th>Actions</th></tr></thead><tbody id="allRows"></tbody></table></div><div id="emptyReports" class="empty" hidden><b>No reports yet</b>Run your first dependency scan to see it here.</div></div>
   <p class="smallprint">Reports are stored in this browser only (local storage). They are not synced to an online account. Vulnerability checks use live OSV.dev responses.</p>
 </section>
 
 <section class="page" id="page-account">
-  <div class="heading"><div><div class="eyebrow">Personal settings</div><h1>My account</h1><p class="sub">Manage your demo profile and workspace preferences.</p></div></div>
+  <div class="heading"><div><div class="eyebrow">Local workspace settings</div><h1>My workspace</h1><p class="sub">Personalize the browser-only workspace. No login or server account is required.</p></div></div>
   <div class="profile">
-    <div class="panel profile-card"><div class="avatar big">MK</div><h2>Melissa King</h2><p>Workspace owner · Demo account</p><div class="planbox"><b>Starter plan <span class="badge clean" style="float:right">ACTIVE</span></b><span>Basic dependency checks and local reports</span></div></div>
-    <div class="panel profile-details"><h2>Profile details</h2><p class="muted" style="font-size:12px;margin:3px 0 15px">Sample profile for demonstrating the user journey.</p>
-      <div class="detailrow"><span>Full name</span><b>Melissa King</b></div><div class="detailrow"><span>Email</span><b>melissa@example.com <span class="muted">(demo)</span></b></div><div class="detailrow"><span>Workspace</span><b>DepSentry Starter</b></div><div class="detailrow"><span>Plan</span><b>Free · MVP prototype</b></div><div class="detailrow"><span>Data storage</span><b>Local browser storage</b></div>
-      <div class="notice" style="margin-top:18px;margin-bottom:0"><strong>Prototype note:</strong> this is a simulated account view, not real authentication. A production version would need a backend, secure sign-in and server-side storage.</div>
+    <div class="panel profile-card"><div class="avatar big" id="profileAvatar">DS</div><h2 id="profileName">DepSentry User</h2><p>Local workspace · no signup</p><div class="planbox"><b>Starter plan <span class="badge clean" style="float:right">ACTIVE</span></b><span>Free dependency checks and local reports</span></div></div>
+    <div class="panel profile-details"><h2>Workspace preferences</h2><p class="muted" style="font-size:12px;margin:3px 0 15px">Changes are saved to this browser only.</p>
+      <form id="profileForm"><div class="field"><label for="displayName">Display name</label><input id="displayName" maxlength="60" placeholder="e.g. Student Developer" required></div>
+      <div class="field"><label for="workspaceName">Workspace name</label><input id="workspaceName" maxlength="60" placeholder="e.g. Cybersecurity Lab" required></div>
+      <button type="submit" class="btn primary">Save preferences</button></form>
+      <div class="notice"><strong>Privacy note:</strong> this is not a registered user account. Reports, feedback, and preferences live only in your browser. Use the Reports backup button before clearing browser data.</div>
     </div>
   </div>
 </section>
@@ -121,12 +140,13 @@ For pom.xml, upload the Maven file.'></textarea><div class="helper">Supported in
 const $=id=>document.getElementById(id);
 const STORAGE='depsentry_mvp_reports_v2',FEEDBACK_STORAGE='depsentry_mvp_feedback_v1';
 let currentReport=null;
+const PROFILE_STORAGE='depsentry_profile_v1';
 function getReports(){try{return JSON.parse(localStorage.getItem(STORAGE)||'[]')}catch(e){return []}}
 function setReports(r){try{localStorage.setItem(STORAGE,JSON.stringify(r))}catch(e){toast('Browser storage is full. Export your report before closing this page.')}}
 function allReports(){return getReports()}
 function toast(s){let t=$('toast');t.textContent=s;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3200)}
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function page(name){document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id==='page-'+name));document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===name));$('crumb').textContent=({dashboard:'Overview',scan:'New scan',reports:'Reports',account:'My account'})[name]||name;window.scrollTo({top:0,behavior:'smooth'});if(name==='reports')renderReports()}
+function page(name){document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id==='page-'+name));document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===name));$('crumb').textContent=({dashboard:'Overview',scan:'New scan',reports:'Reports',account:'My account'})[name]||name;window.scrollTo({top:0,behavior:'smooth'});if(name==='reports')renderReports();if(name==='account')renderProfile()}
 document.querySelectorAll('[data-page]').forEach(b=>b.onclick=()=>page(b.dataset.page));
 document.querySelectorAll('[data-goto]').forEach(b=>b.onclick=()=>page(b.dataset.goto));
 $('topNew').onclick=()=>page('scan');
@@ -143,7 +163,7 @@ function renderDashboard(){
 function renderReports(){
  let rr=allReports().slice().sort((a,b)=>new Date(b.created||0)-new Date(a.created||0));
  $('reportCount').textContent=rr.length+' real scan reports · saved in this browser';
- $('allRows').innerHTML=rr.map(r=>`<tr><td><span class="pkg">${esc(r.project)}</span></td><td>${esc(r.ecosystem||'—')}</td><td>${r.packages}</td><td><span class="badge ${r.findings?'high':'clean'}">${r.findings}</span></td><td>${r.critical||0}</td><td>${esc(r.date||dateShort(r.created))}</td><td><button class="textbtn" onclick="openReport('${esc(r.id)}')">Open</button></td></tr>`).join('');
+ $('allRows').innerHTML=rr.map(r=>`<tr><td><span class="pkg">${esc(r.project)}</span></td><td>${esc(r.ecosystem||'—')}</td><td>${r.packages}</td><td><span class="badge ${r.findings?'high':'clean'}">${r.findings}</span></td><td>${r.critical||0}</td><td>${esc(r.date||dateShort(r.created))}</td><td><button class="textbtn" onclick="openReport('${esc(r.id)}')">Open</button> <button class="textbtn danger-link" onclick="deleteReport('${esc(r.id)}')">Delete</button></td></tr>`).join('');
  $('emptyReports').hidden=rr.length>0; if(!rr.length)$('allRows').innerHTML='';
 }
 function parseDeps(text,choice){
@@ -168,6 +188,7 @@ function parseDeps(text,choice){
      }
      deps=Object.entries(p).map(([name,v])=>({name,version:exactVersion(v),ecosystem:'npm'}));
    }catch(e){
+     if(raw.startsWith('{')||raw.startsWith('['))throw new Error('Invalid JSON. Check brackets and commas in your package file.');
      let p={};raw.split(/\r?\n/).forEach(line=>{let m=line.match(/^\s*["']?(@?[^"'@\s:]+(?:\/[^"'@\s:]+)?)['"]?\s*[:=]\s*["']?([^"',\s}]+)/);if(m)p[m[1]]=m[2]});
      deps=Object.entries(p).map(([name,v])=>({name,version:exactVersion(v),ecosystem:'npm'}));
    }
@@ -194,7 +215,20 @@ function parseDeps(text,choice){
 function exactVersion(v){let s=String(v||'').trim();return /^v?\d+\.\d+(?:\.\d+)?(?:[-+][0-9A-Za-z.-]+)?$/.test(s)?cleanVersion(s):''}
 function cleanVersion(v){return String(v||'').trim().replace(/^[~^<>=v\s]+/,'').replace(/\s.*$/,'')}
 $('loadExample').onclick=()=>{$('projectName').value='Student API';$('ecosystem').value='npm';$('depsInput').value=JSON.stringify({name:'student-api',dependencies:{lodash:'4.17.15',express:'4.17.1',minimist:'1.2.0',axios:'0.21.1',react:'18.2.0'}},null,2);$('scanError').hidden=true;toast('Example loaded. Click Check dependencies to query live OSV.dev data.')};
-$('fileInput').onchange=e=>{let f=e.target.files[0];if(!f)return;let reader=new FileReader();reader.onload=()=>{$('depsInput').value=reader.result;$('projectName').value=$('projectName').value==='Student project'?f.name.replace(/\.[^.]+$/,''):$('projectName').value;$('ecosystem').value=/requirements|\.in$/i.test(f.name)?'PyPI':/pom\.xml$/i.test(f.name)?'Maven':/package(-lock)?\.json/i.test(f.name)?'npm':'auto';toast(f.name+' loaded locally in your browser')};reader.readAsText(f)};
+function handleInputFile(f){
+ if(!f)return;
+ if(!/\.(json|txt|in|xml)$/i.test(f.name)){toast('Unsupported file. Choose JSON, TXT, IN or XML.');return}
+ if(f.size>1024*1024){toast('File is too large. Maximum size is 1 MB.');return}
+ const reader=new FileReader();reader.onerror=()=>toast('Could not read that file.');
+ reader.onload=()=>{$('depsInput').value=String(reader.result||'');if($('projectName').value==='Student project')$('projectName').value=f.name.replace(/\.[^.]+$/,'');$('ecosystem').value=/requirements|\.in$/i.test(f.name)?'PyPI':/pom\.xml$/i.test(f.name)?'Maven':/package(-lock)?\.json/i.test(f.name)?'npm':'auto';$('scanError').hidden=true;toast(f.name+' loaded locally. Ready to scan.')};
+ reader.readAsText(f);
+}
+$('fileInput').onchange=e=>handleInputFile(e.target.files[0]);
+$('resetInput').onclick=()=>{$('depsInput').value='';$('fileInput').value='';$('projectName').value='Student project';$('ecosystem').value='auto';$('scanError').hidden=true;toast('Input cleared')};
+const dropzone=$('dropzone');dropzone.onclick=()=>$('fileInput').click();dropzone.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();$('fileInput').click()}};
+for(const ev of ['dragenter','dragover'])dropzone.addEventListener(ev,e=>{e.preventDefault();dropzone.classList.add('dragover')});
+for(const ev of ['dragleave','drop'])dropzone.addEventListener(ev,e=>{e.preventDefault();dropzone.classList.remove('dragover')});
+dropzone.addEventListener('drop',e=>handleInputFile(e.dataTransfer?.files?.[0]));
 async function osvBatch(deps){
  const valid=deps.filter(d=>d.version);
  if(!valid.length)throw new Error('Add exact versions, for example lodash 4.17.15 or requests==2.19.0.');
@@ -391,11 +425,11 @@ async function runScan(){
 function saveFeedback(event){
  event.preventDefault();
  if(!currentReport){toast('Run or open a scan before saving feedback.');return}
- const status=$('feedbackStatus'),feedback={reportId:currentReport.id,actionable:$('feedbackActionable').value,risk:$('feedbackRisk').value,missing:$('feedbackMissing').value.trim(),created:new Date().toISOString()};
+ const status=$('feedbackStatus'),feedback={reportId:currentReport.id,testerId:$('testerId').value.trim(),actionable:$('feedbackActionable').value,risk:$('feedbackRisk').value,missing:$('feedbackMissing').value.trim(),created:new Date().toISOString()};
  try{
   const stored=JSON.parse(localStorage.getItem(FEEDBACK_STORAGE)||'[]');
   if(!Array.isArray(stored))throw new Error('Stored feedback has an invalid format.');
-  const updated=stored.filter(entry=>entry.reportId!==feedback.reportId);updated.push(feedback);
+  const updated=stored.filter(entry=>!(entry.reportId===feedback.reportId&&entry.testerId===feedback.testerId));updated.push(feedback);
   localStorage.setItem(FEEDBACK_STORAGE,JSON.stringify(updated));
   status.textContent='Saved locally. Thank you!';
  }catch(error){
@@ -408,11 +442,33 @@ $('feedbackForm').onsubmit=saveFeedback;
 $('runScan').onclick=runScan;
 $('printReport').onclick=()=>{if(!currentReport)return;page('scan');window.print()};
 $('downloadJson').onclick=()=>{if(!currentReport)return;downloadFile(JSON.stringify(currentReport,null,2),`${slug(currentReport.project)}-report.json`,'application/json')};
+function csvCell(v){return '"'+String(v??'').replace(/"/g,'""')+'"'}
+function csv(rows){return rows.map(row=>row.map(csvCell).join(',')).join('\r\n')+'\r\n'}
+$('downloadCsv').onclick=()=>{
+ if(!currentReport)return;
+ const rows=[['Project','Scan date','Ecosystem','Package','Installed version','Advisory ID','Severity','Summary','Advisory URL']];
+ if(!currentReport.items?.length)rows.push([currentReport.project,currentReport.created,currentReport.ecosystem,'','','','None','No matching advisories returned','']);
+ (currentReport.items||[]).forEach(item=>affectedDependencies(item).forEach(dep=>rows.push([currentReport.project,currentReport.created,dep.ecosystem,dep.name,dep.version,item.id,item.severity,item.summary,item.url||item.links?.[0]?.url||''])));
+ downloadFile(csv(rows),`${slug(currentReport.project)}-findings.csv`,'text/csv;charset=utf-8');
+};
+$('exportFeedback').onclick=()=>{
+ let feedback=[];try{feedback=JSON.parse(localStorage.getItem(FEEDBACK_STORAGE)||'[]')}catch(e){toast('Feedback storage could not be read.');return}
+ if(!feedback.length){toast('No feedback has been saved yet.');return}
+ const rows=[['Participant ID','Report ID','Project','Date','Update priority clear','Risk label useful','Comments']];
+ feedback.forEach(f=>rows.push([f.testerId||'Not recorded',f.reportId,getReports().find(r=>r.id===f.reportId)?.project||'',f.created,f.actionable,f.risk,f.missing]));
+ downloadFile(csv(rows),'depsentry-user-feedback.csv','text/csv;charset=utf-8');
+};
+$('exportBackup').onclick=()=>{const obj={exportedAt:new Date().toISOString(),reports:getReports(),feedback:JSON.parse(localStorage.getItem(FEEDBACK_STORAGE)||'[]')};downloadFile(JSON.stringify(obj,null,2),'depsentry-backup.json','application/json')};
+function deleteReport(id){const r=getReports().find(x=>x.id===id);if(!r)return;if(!confirm('Delete report for '+r.project+'? This cannot be undone.'))return;setReports(getReports().filter(x=>x.id!==id));if(currentReport?.id===id){currentReport=null;$('scanResults').hidden=true}renderReports();renderDashboard();toast('Report deleted')}
+window.deleteReport=deleteReport;
+function getProfile(){try{return {...{displayName:'DepSentry User',workspaceName:'My Workspace'},...JSON.parse(localStorage.getItem(PROFILE_STORAGE)||'{}')}}catch(e){return {displayName:'DepSentry User',workspaceName:'My Workspace'}}}
+function renderProfile(){const p=getProfile();$('displayName').value=p.displayName;$('workspaceName').value=p.workspaceName;$('profileName').textContent=p.displayName;$('sideName').textContent=p.displayName;const initials=p.displayName.split(/\s+/).slice(0,2).map(s=>s[0]||'').join('').toUpperCase();$('profileAvatar').textContent=initials;$('sideAvatar').textContent=initials;document.querySelector('.crumb').firstChild.textContent=p.workspaceName+' / '}
+$('profileForm').onsubmit=e=>{e.preventDefault();const profile={displayName:$('displayName').value.trim(),workspaceName:$('workspaceName').value.trim()};if(!profile.displayName||!profile.workspaceName)return;try{localStorage.setItem(PROFILE_STORAGE,JSON.stringify(profile));renderProfile();toast('Preferences saved in this browser')}catch(err){toast('Unable to save preferences')}};
 function slug(s){return String(s||'report').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'report'}
 function downloadFile(content,name,type){let a=document.createElement('a'),url=URL.createObjectURL(new Blob([content],{type}));a.href=url;a.download=name;a.click();URL.revokeObjectURL(url)}
 function openReport(id){let r=allReports().find(x=>x.id===id);if(!r){toast('Report not found');return}currentReport=r;page('scan');$('projectName').value=r.project;$('resultsTitle').textContent=r.project+' · scan report';$('resultsDesc').textContent=`${r.packages} packages checked · ${r.date} · Source: ${r.source}`;findingFilter='all';findingPackage='all';showAllFindings=false;allAdvisoriesOpen=false;renderFindings(r.items||[]);$('feedbackForm').reset();$('feedbackStatus').textContent='';$('scanResults').hidden=false;setTimeout(()=>$('scanResults').scrollIntoView({behavior:'smooth'}),100)}
 window.openReport=openReport;
 $('clearHistory').onclick=()=>{if(confirm('Clear all scan reports and related feedback saved in this browser?')){setReports([]);try{localStorage.removeItem(FEEDBACK_STORAGE)}catch(error){console.error('Could not clear locally saved feedback.',error);toast('Reports cleared, but feedback could not be removed from browser storage.');return}renderReports();renderDashboard();toast('Local report history and feedback cleared')}};
-renderDashboard();renderReports();
+renderProfile();renderDashboard();renderReports();
 </script>
 </body></html>
